@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cecilia & Marco - Matrimonio</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="intro-overlay">
+        <div class="paper-texture"></div>
+        <div class="watercolor-bg"></div>
+        <div class="intro-content">
+            <h1 class="intro-names">Cecilia & Marco</h1>
+            <p class="intro-date">27 Giugno 2026</p>
+            <div class="intro-btn">Entra</div>
+        </div>
+    </div>
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        
+        <label class="logo">C&M</label>
+
+        <ul class="text">
+            <li><a href="#location">Location</a></li>
+            <li><a href="#rsvp">R.S.V.P.</a></li>
+            <li><a href="#gift">Regalo</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section hz-margin">
+        <h3 class="reveal">Ci sposiamo!</h3>
+        <h1 class="reveal">Cecilia & Marco</h1>
+        
+        <div class="hero-photo-container reveal">
+            <img src="img/coppia.jpg" alt="Cecilia e Marco">
+        </div>
+
+        <div class="hero-details reveal">
+            <p class="big-date">27 GIUGNO 2026</p>
+            <p class="location-text">Bergamo, Italia</p>
+        </div>
+
+        <div id="countdown" class="reveal">
+            <div class="time-box"><span id="days">00</span><small>Giorni</small></div>
+            <div class="time-box"><span id="hours">00</span><small>Ore</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+        </div>
+    </section>
+
+    <section id="location" class="location-section hz-margin">
+        <h2 class="reveal">Il Grande Giorno</h2>
+        
+        <div class="timeline-vertical reveal">
+            <div class="timeline-event">
+                <div class="event-time">ORE 15:00</div>
+                <div class="event-content">
+                    <h3>La Cerimonia</h3>
+                    <p class="text">Santuario della madonna di Prada</p>
+                    <p class="text-small">Mapello, Bergamo </p>
+                    <div class="btn-group">
+                        <a href="https://maps.app.goo.gl/KcBCKPJjZriz31iz8" target="_blank" class="btn btn-map">Vedi Mappa</a>
+                        <a href="https://goo.gl/maps/tuo_link_parcheggio" target="_blank" class="btn btn-parking">P - Parcheggio</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="event-time">ORE 17:30</div>
+                <div class="event-content">
+                    <h3>Il Ricevimento</h3>
+                    <p class="text">Castello di Clanezzo</p>
+                    <p class="text-small">Via Castello, Clanezzo (BG)</p>
+                    <div class="btn-group">
+                        <a href="https://maps.app.goo.gl/rKHRdHXK7z7AWSxV6" target="_blank" class="btn btn-map">Vedi Mappa</a>
+                        <a href="https://goo.gl/maps/tuo_link_parcheggio_villa" target="_blank" class="btn btn-parking">P - Parcheggio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="rsvp-section hz-margin">
+        <h2 class="reveal">Conferma Presenza</h2>
+        <p class="text reveal" style="text-align: center; margin-bottom: 30px;">
+            Saremmo felici di averti con noi! Facci sapere se potrai esserci.
+        </p>
+
+        <form class="rsvp-form reveal">
+            <div class="form-group">
+                <label>Nome e Cognome</label>
+                <input type="text" placeholder="Mario Rossi" required>
+            </div>
+            <div class="form-group">
+                <label>Partecipazione</label>
+                <select>
+                    <option>Sì, ci sarò!</option>
+                    <option>Purtroppo non posso</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Intolleranze / Allergie</label>
+                <textarea rows="3" placeholder="Es. Vegetariano, Celiaco..."></textarea>
+            </div>
+            <button type="submit" class="huge-btn">Invia Conferma</button>
+        </form>
+    </section>
+
+    <section id="gift" class="gift-section hz-margin">
+        <h2 class="reveal">Regalo</h2> <p class="text reveal" style="text-align: center; margin-bottom: 20px;">
+            La vostra presenza è il nostro regalo più grande. <br>
+            Se desiderate contribuire al nostro viaggio di nozze:
+        </p>
+        
+        <div class="iban-card reveal">
+            <p class="iban-label">IBAN</p>
+            <p class="iban-number">IT00 X000 0000 0000 0000 0000 000</p>
+            <p class="iban-owner">Intestato a Cecilia & Marco</p>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-size: 1.5rem;">Cecilia & Marco</h2>
+        <div class="text">27 Giugno 2026</div>
+    </footer>
+
+    <script>
+        // 1. INTRO
+        document.addEventListener('DOMContentLoaded', () => {
+            const introOverlay = document.getElementById('intro-overlay');
+            const introBtn = document.querySelector('.intro-btn');
+
+            function enterSite() {
+                if (introOverlay) {
+                    introOverlay.classList.add('fade-out');
+                    setTimeout(() => { introOverlay.style.display = 'none'; }, 1500);
+                }
+            }
+
+            if (introBtn) introBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                enterSite();
+            });
+        });
+
+        // 2. SCROLL REVEAL (Animazioni)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Avvia subito
+
+        // 3. COUNTDOWN
+        const weddingDate = new Date(2026, 5, 27, 11, 0, 0).getTime(); // Giugno = 5
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+        }, 1000);
+    </script>
+</body>
+</html>
