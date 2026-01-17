@@ -7,6 +7,7 @@
     <title>Cecilia & Marco - Matrimonio</title>
     
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
     
     <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -39,17 +40,16 @@
             <li><a href="#location">Location</a></li>
             <li><a href="#rsvp">R.S.V.P.</a></li>
             <li><a href="#gift">Regalo</a></li>
+            <li><a href="#contatti">Domande</a></li>
+            <li><a href="#contatti">Contatti</a></li>
         </ul>
     </nav>
 
-    <section class="hero-section hz-margin">
-        <h3 class="reveal">Ci sposiamo!</h3>
-        <h1 class="reveal">Cecilia & Marco</h1>
+    <section class="hero-section">
         
-        <div class="hero-photo-container reveal">
-            <img src="img/coppia.jpg" alt="Cecilia e Marco">
-        </div>
-
+        <h1 class="reveal" style="color:#eee">Ci sposiamo!</h1>
+  
+        
         <div class="hero-details reveal">
             <p class="big-date">27 GIUGNO 2026</p>
             <p class="location-text">Bergamo, Italia</p>
@@ -59,83 +59,132 @@
             <div class="time-box"><span id="days">00</span><small>Giorni</small></div>
             <div class="time-box"><span id="hours">00</span><small>Ore</small></div>
             <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>Sec</small></div>
         </div>
     </section>
 
     <section id="location" class="location-section hz-margin">
         <h2 class="reveal">Il Grande Giorno</h2>
         
-        <div class="timeline-vertical reveal">
-            <div class="timeline-event">
-                <div class="event-time">ORE 15:00</div>
-                <div class="event-content">
+        <div class="cards-container">
+            
+            <a href="https://maps.app.goo.gl/rThNszC6cnC7SVS7A" target="_blank" class="location-card reveal">
+                <div class="card-image">
+                    <img src="img/chiesacard.png" alt="Santuario della Madonna di Prada">
+                    <span class="card-badge">Ore 15:00</span>
+                </div>
+                <div class="card-content">
                     <h3>La Cerimonia</h3>
-                    <p class="text">Santuario della madonna di Prada</p>
-                    <p class="text-small">Mapello, Bergamo </p>
-                    <div class="btn-group">
-                        <a href="https://maps.app.goo.gl/KcBCKPJjZriz31iz8" target="_blank" class="btn btn-map">Vedi Mappa</a>
-                        <a href="https://goo.gl/maps/tuo_link_parcheggio" target="_blank" class="btn btn-parking">P - Parcheggio</a>
-                    </div>
+                    <p class="venue-name">Santuario della Madonna di Prada</p>
+                    <p class="venue-address">Mapello, Bergamo</p>
+                    <span class="click-cta"><i class="fas fa-map-marker-alt"></i> Vai alla mappa</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="timeline-event">
-                <div class="event-time">ORE 17:30</div>
-                <div class="event-content">
-                    <h3>Il Ricevimento</h3>
-                    <p class="text">Castello di Clanezzo</p>
-                    <p class="text-small">Via Castello, Clanezzo (BG)</p>
-                    <div class="btn-group">
-                        <a href="https://maps.app.goo.gl/rKHRdHXK7z7AWSxV6" target="_blank" class="btn btn-map">Vedi Mappa</a>
-                        <a href="https://goo.gl/maps/tuo_link_parcheggio_villa" target="_blank" class="btn btn-parking">P - Parcheggio</a>
-                    </div>
+            <a href="https://maps.app.goo.gl/hHsn16Y5tDuKKBRy6" target="_blank" class="location-card reveal">
+                <div class="card-image">
+                    <img src="img/castellocard.png" alt="Castello di Clanezzo">
+                    <span class="card-badge">Ore 17:30</span>
                 </div>
-            </div>
+                <div class="card-content">
+                    <h3>Il Ricevimento</h3>
+                    <p class="venue-name">Castello di Clanezzo</p>
+                    <p class="venue-address">Via Castello, Clanezzo (BG)</p>
+                    <span class="click-cta"><i class="fas fa-map-marker-alt"></i> Vai alla mappa</span>
+                </div>
+            </a>
+
         </div>
     </section>
 
     <section id="rsvp" class="rsvp-section hz-margin">
-        <h2 class="reveal">Conferma Presenza</h2>
+        <h2 class="reveal">Vi aspettiamo per brindare insieme!</h2>
         <p class="text reveal" style="text-align: center; margin-bottom: 30px;">
-            Saremmo felici di averti con noi! Facci sapere se potrai esserci.
+            Non vediamo l'ora di condividere questo giorno speciale con voi! <br>
+            Vi chiediamo di darci conferma entro il <a style="text-underline-position: auto;"> 15 aprile 2026</a> per potervi accogliere al meglio.
         </p>
-
-        <form class="rsvp-form reveal">
-            <div class="form-group">
-                <label>Nome e Cognome</label>
-                <input type="text" placeholder="Mario Rossi" required>
-            </div>
-            <div class="form-group">
-                <label>Partecipazione</label>
-                <select>
-                    <option>Sì, ci sarò!</option>
-                    <option>Purtroppo non posso</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Intolleranze / Allergie</label>
-                <textarea rows="3" placeholder="Es. Vegetariano, Celiaco..."></textarea>
-            </div>
-            <button type="submit" class="huge-btn">Invia Conferma</button>
-        </form>
+         <button type="submit" class="huge-btn" onclick="goRSPV()">clicca qui</button>
     </section>
 
     <section id="gift" class="gift-section hz-margin">
-        <h2 class="reveal">Regalo</h2> <p class="text reveal" style="text-align: center; margin-bottom: 20px;">
-            La vostra presenza è il nostro regalo più grande. <br>
-            Se desiderate contribuire al nostro viaggio di nozze:
-        </p>
-        
-        <div class="iban-card reveal">
-            <p class="iban-label">IBAN</p>
-            <p class="iban-number">IT00 X000 0000 0000 0000 0000 000</p>
-            <p class="iban-owner">Intestato a Cecilia & Marco</p>
-        </div>
+        <h2 class="reveal">Regalo</h2> 
+        <p class="text reveal" style="text-align: center; margin-bottom: 20px;">
+                La vostra presenza è il nostro regalo più grande. <br>
+                Se desiderate contribuire al nostro viaggio di nozze:
+        </p> 
+        <button type="submit" class="huge-btn" onclick="goRegalo()">clicca qui</button> 
     </section>
 
-    <footer>
-        <h2 style="font-size: 1.5rem;">Cecilia & Marco</h2>
-        <div class="text">27 Giugno 2026</div>
+    <section>
+        <div class="mosaic-section reveal">
+        <div class="mosaic-grid">
+            
+            <div class="mosaic-item">
+                <img src="img/foto1.jpeg" alt="Foto verticale">
+            </div>
+            
+            <div class="mosaic-item">
+                <img src="img/foto2.jpeg" alt="Foto orizzontale">
+            </div>
+            
+            <div class="mosaic-item">
+                <img src="img/foto3.jpeg" alt="Foto quadrata">
+            </div>
+            
+            <div class="mosaic-item">
+                <img src="img/foto4.jpeg" alt="Foto verticale">
+            </div>
+            
+            <div class="mosaic-item">
+                <img src="img/foto5.jpeg" alt="Foto orizzontale">
+            </div>
+            
+            <div class="mosaic-item">
+                <img src="img/foto6.jpeg" alt="Replica 1">
+            </div>
+            <div class="mosaic-item">
+                <img src="img/foto7.jpeg" alt="Replica 2">
+            </div>
+             <div class="mosaic-item">
+                <img src="img/foto8.jpeg" alt="Replica 3">
+            </div>
+            <div class="mosaic-item">
+                <img src="img/foto9.jpeg" alt="Replica 4">
+            </div>
+
+            <div class="mosaic-item">
+                <img src="img/foto10.jpeg" alt="Replica 4">
+            </div>
+
+            <div class="mosaic-item">
+                <img src="img/foto11.jpeg" alt="Replica 4">
+            </div>
+
+        </div>
+        </div>
+    </section>
+    <footer id="contatti">
+        <div class="footer-col left">
+            <h3>Cecilia Terranova</h3>
+            <p>Tel: +39 329 9865945</p>
+        </div>
+
+        <div class="footer-col center">
+            <h2 style="font-size: 1.5rem; margin-bottom: 10px; color: white;">Cecilia & Marco</h2>
+            <div class="text" style="color: #eee; margin-bottom: 15px;">27 Giugno 2026</div>
+            
+            <p>Per qualsiasi informazione scrivici a:</p>
+            <p style="margin-top: 5px;">
+                <a href="mailto:marcoececilia2023@email.com" style="font-size: 1.2rem; color: #eee;">
+                    marcoececilia2023@email.com
+                </a>
+            </p>
+        </div>
+
+        <div class="footer-col right">
+            <h3>Marco Parmeggiani</h3> 
+            <p>Tel: +39 320 4143614</p>
+        </div>
     </footer>
 
     <script>
@@ -157,7 +206,7 @@
             });
         });
 
-        // 2. SCROLL REVEAL (Animazioni)
+        // 2. SCROLL REVEAL
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -170,20 +219,35 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Avvia subito
+        reveal(); 
 
-        // 3. COUNTDOWN
-        const weddingDate = new Date(2026, 5, 27, 11, 0, 0).getTime(); // Giugno = 5
+        // 3. COUNTDOWN (Con Secondi)
+        const weddingDate = new Date(2026, 5, 27, 15, 0, 0).getTime(); // Giugno = 5
+        
         setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            // Calcolo secondi
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
             document.getElementById("days").innerText = days;
             document.getElementById("hours").innerText = hours;
             document.getElementById("minutes").innerText = minutes;
+            // Aggiorno secondi
+            document.getElementById("seconds").innerText = seconds;
+
         }, 1000);
+
+        function goRSPV() {
+            window.location.href = "rsvp.html";
+        }
+        function goRegalo() {
+            window.location.href = "listanozze.html";
+        }
     </script>
 </body>
 </html>

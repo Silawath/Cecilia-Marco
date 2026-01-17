@@ -1,4 +1,6 @@
-/* <=================== CSS VARIABLES ===================> */
+/* <=================== STYLE.CSS - GLOBALE ===================> */
+
+/* --- VARIABILI & COLORI --- */
 :root{
     --h1-size: 4rem;
     --h2-size: 2.2rem;
@@ -10,33 +12,37 @@
     --bg-sage: rgb(244, 233, 211); 
     --bg-sage-light: rgb(231, 230, 196);
     --wine-color: #5c1a20;  
+    --wine-color-light: #693a3f; 
     --wine-dark: #4a1218;   
     --text-color: #212121;
     --white: #ffffff;
+    --nav-height: 60px; 
 }
 
-/* <=================== UNIVERSAL CSS ===================> */
+/* --- RESET & BASI --- */
 *{
     box-sizing: border-box;
     margin: 0;
     color: var(--text-color);
-    /* NOTA: Ho rimosso il font-family da qui per non bloccare le icone e il corsivo */
 }
 
 html{
     scroll-behavior: smooth;
     background-color: var(--bg-sage); 
+    overflow-x: hidden;
 }
 
-/* FONT PRINCIPALE APPLICATO AL BODY */
 body {
     font-family: 'Cinzel', serif;
+    padding-top: var(--nav-height); 
+    overflow-x: hidden;
 }
 
 .hz-margin{
     padding: 0 var(--horizontal-margin-spacing);
 }
 
+/* --- TIPOGRAFIA --- */
 h1{
     font-size: var(--h1-size);
     font-weight: 500;
@@ -52,7 +58,7 @@ h2{
     color: var(--wine-dark);
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-align: center; /* Titoli centrati */
+    text-align: center;
     margin-bottom: 40px;
 }
 
@@ -72,7 +78,7 @@ h3{
     color: #333;
 }
 
-/* <=================== ANIMAZIONE REVEAL (Fondamentale) ===================> */
+/* --- ANIMAZIONI --- */
 .reveal{
     position: relative;
     transform: translateY(150px);
@@ -84,7 +90,7 @@ h3{
     opacity: 1;
 }
 
-/* <=================== PULSANTI ===================> */
+/* --- ELEMENTI COMUNI (Bottoni, Navbar, Footer) --- */
 .huge-btn{
     display: block;
     font-size: 1rem;
@@ -110,30 +116,35 @@ h3{
     box-shadow: 0 5px 15px rgba(92, 26, 32, 0.2);
 }
 
-/* <=================== NAVBAR ===================> */
+/* NAVBAR */
 nav{
-    height: 3vh;
-    width: 100%;
-    margin-bottom: 15vh;
+    height: var(--nav-height);
+    width: 100%;;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--wine-color-light);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
 }
 
 label.logo{
     font-family: 'Cinzel', serif;
     font-size: 35px;
-    line-height: 80px;
-    padding: 0 0 0 30px;
     font-weight: bold;
-    color: var(--wine-color);
+    color: var(--white);
+    cursor: pointer;
 }
 
 nav ul{
-    float: right;
-    margin-right: 20px;
     list-style: none;
 }
 nav ul li{
     display: inline-block;
-    line-height: 80px;
     margin: 0 5px;
 }
 nav ul li a{
@@ -144,333 +155,75 @@ nav ul li a{
     border-radius: 3px;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--white);
 }
 a:hover{
-    color: var(--wine-color);
+    color: var(--text-color);
     transition: .5s;
 }
 .checkbtn{
     font-size: 30px;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
     cursor: pointer;
     display: none;
+    color: var(--text-color);
 }
 #check{
     display: none;
 }
 
-/* <=================== WATERCOLOR INTRO STYLE ===================> */
-#intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: opacity 1.5s ease-out, visibility 1.5s;
-}
-
-.watercolor-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Assicurati che l'immagine esista in questa cartella */
-    background-image: url('img/castello.jpg'); 
-    background-size: cover;
-    background-position: center;
-    animation: gentleZoom 20s infinite alternate;
-}
-
-.intro-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 20px;
-}
-
-/* FIX FONT CORSIVO */
-.intro-names {
-    font-family: 'Great Vibes', cursive !important;
-    font-size: 6rem;
-    color: var(--wine-color);
-    margin: 0;
-    font-weight: 400;
-    text-shadow: 0px 0px 10px rgba(255,255,255,0.9);
-    line-height: 1.2;
-    text-transform: none !important; /* Importante per non farlo diventare maiuscolo */
-}
-
-.intro-date {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
-    color: var(--wine-dark);
-    margin-top: 5px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-shadow: 0px 0px 8px rgba(255,255,255,0.9);
-}
-
-.intro-btn {
-    margin-top: 40px;
-    display: inline-block;
-    padding: 12px 40px;
-    border: 1px solid var(--wine-color);
-    color: var(--wine-color);
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-.intro-btn:hover {
-    background-color: var(--wine-color);
-    color: white;
-}
-.fade-out { opacity: 0; visibility: hidden; }
-@keyframes gentleZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
-
-
-/* <=================== SEZIONI SPECIFICHE ===================> */
-
-/* HERO (FOTO E DATA) */
-.hero-section {
-    text-align: center;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-}
-
-.hero-photo-container {
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    margin: 30px auto;
-    border-radius: 150px 150px 0 0;
-    overflow: hidden;
-    border: 2px solid var(--wine-color);
-}
-
-.hero-photo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.big-date {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: var(--wine-dark);
-    margin-top: 20px;
-}
-
-/* COUNTDOWN */
-#countdown {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-}
-.time-box {
-    text-align: center;
-    border: 1px solid var(--wine-color);
-    padding: 10px 20px;
-    border-radius: 8px;
-    min-width: 80px;
-}
-.time-box span {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--wine-dark);
-}
-.time-box small {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-}
-
-/* LOCATION & TIMELINE */
-.location-section {
-    background-color: var(--bg-sage-light);
-    padding: 60px 0;
-}
-
-.timeline-vertical {
-    position: relative;
-    max-width: 800px;
-    margin: 40px auto;
-    padding-left: 40px;
-    border-left: 2px solid var(--wine-color);
-}
-
-.timeline-event {
-    position: relative;
-    margin-bottom: 60px;
-}
-
-.timeline-event::before {
-    content: '';
-    position: absolute;
-    left: -49px;
-    top: 0;
-    width: 16px;
-    height: 16px;
-    background: var(--bg-sage);
-    border: 2px solid var(--wine-color);
-    border-radius: 50%;
-}
-
-.event-time {
-    font-weight: bold;
-    color: var(--wine-color);
-    margin-bottom: 5px;
-    font-family: 'Cinzel', serif;
-}
-
-.event-content h3 {
-    margin-top: 0;
-    font-size: 1.8rem;
-}
-
-.text-small {
-    font-size: 0.9rem;
-    font-style: italic;
-    margin-bottom: 15px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.btn-group {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.btn {
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: 0.3s;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.btn-map {
-    background-color: var(--wine-color);
-    color: white;
-}
-
-.btn-parking {
-    border: 1px solid var(--wine-color);
-    color: var(--wine-color);
-}
-.btn:hover { opacity: 0.8; }
-
-/* RSVP FORM */
-.rsvp-section {
-    padding: 60px 20px;
-}
-
-.rsvp-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.7);
-    padding: 40px;
-    border-radius: 10px;
-    border: 1px solid var(--wine-color);
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--wine-dark);
-}
-
-.form-group input, 
-.form-group select, 
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-}
-
-/* REGALO (IBAN) */
-.gift-section {
-    text-align: center;
-    padding-bottom: 100px;
-}
-
-.iban-card {
-    background-color: white;
-    padding: 30px;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 2px dashed var(--wine-color);
-    border-radius: 10px;
-}
-
-.iban-label {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--wine-color);
-}
-
-.iban-number {
-    font-family: 'Montserrat', monospace;
-    font-size: 1.3rem;
-    margin: 10px 0;
-    word-break: break-all;
-    font-weight: bold;
-}
-
+/* FOOTER */
 footer {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: var(--wine-color);
-}
-footer h2, footer .text {
+    background-color: var(--wine-color-light);
     color: white;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* <=================== MOBILE RESPONSIVE ===================> */
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.footer-col.left { text-align: left; }
+.footer-col.right { text-align: right; }
+.footer-col h3 { color: white; font-size: 1.1rem; margin-bottom: 10px; }
+.footer-col p { color: #eee; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; margin-bottom: 5px; }
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: #ddd;
+    border-bottom-color: #ddd;
+    opacity: 0.8;
+}
+
+/* RESPONSIVE BASE */
 @media (max-width:1000px){
     label.logo{ font-size: 20px; }
     nav ul li a{ font-size: 10px; }
 }
 
-@media (max-width:570px){
+@media (max-width:768px){
+    footer { flex-direction: column; text-align: center; }
+    .footer-col.left, .footer-col.right { text-align: center; }
+    
     .checkbtn{ display: block; }
     ul{
         position: fixed;
         width: 100%;
         height: 100vh;
         background-color: var(--bg-sage);
-        top: 80px;
+        top: 80px; 
         left: -100%;
         text-align: center;
         transition: all .5s;
@@ -479,11 +232,4 @@ footer h2, footer .text {
     nav ul li{ display: block; margin: 50px 0; line-height: 30px; }
     nav li ul a{ font-size: 20px; }
     #check:checked ~ ul{ left: 0; }
-    
-    .hero-photo-container { height: 250px; }
-    .timeline-vertical { padding-left: 20px; }
-    .timeline-event::before { left: -29px; }
-    .btn-group { flex-direction: column; }
-    .iban-number { font-size: 1rem; }
-    .intro-names { font-size: 4rem; }
 }

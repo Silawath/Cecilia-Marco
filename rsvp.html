@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP - Cecilia & Marco</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rsvp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
+</head>
+<body class="rsvp-page-body">
+
+    <nav>
+        <label class="logo"><a href="index.html" style="color:var(--white); text-decoration:none;">C&M</a></label>
+        <ul class="text">
+            <li><a href="index.html#location">Location</a></li>
+            <li><a href="index.html#rsvp">R.S.V.P.</a></li>
+            <li><a href="index.html#gift">Regalo</a></li>
+            <li><a href="#contatti">Domande</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <div class="rsvp-container-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <h2 class="rsvp-title">Conferma la tua presenza</h2>
+        
+        <div class="rsvp-container">
+            <div class="form-step active" id="step1">
+                <h3 class="title-instruction">Cerca il tuo nome e cognome</h3>
+                <p class="step-instruction">Inseriscilo nella barra sottostante per confermare la tua presenza e quella del tuo nucleo familiare</p>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Es. Mario Rossi" style="margin-bottom: 40px;">
+                    <button class="huge-btn" style="margin: 0; min-width: 120px;" onclick="searchGuest()">Cerca</button>
+                </div>
+                <p id="searchError" class="error-msg"></p>
+            </div>
+
+            <div class="form-step" id="step2">
+                <h3 class="title-instruction">Chi sarà presente?</h3>
+                <p class="step-instruction">Seleziona chi parteciperà al matrimonio.</p>
+                <div id="familyList" class="family-list">
+                    </div>
+                <div class="nav-buttons">
+                    <button class="huge-btn" style="width: 48%;" onclick="prevStep(1)">Indietro</button>
+                    <button class="huge-btn" style="width: 48%;" onclick="goToDietStep()">Avanti</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step3">
+                <h3 class="title-instruction">Esigenze Alimentari</h3>
+                <p class="step-instruction">Indica le preferenze per i partecipanti confermati.</p>
+                <div id="dietList" class="diet-list">
+                    </div>
+                <div class="nav-buttons">
+                    <button class="huge-btn" style="width: 48%;" onclick="prevStep(2)">Indietro</button>
+                    <button class="huge-btn" style="width: 48%;" onclick="submitRSVP()">Invia</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step4" style="text-align: center;">
+                <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--wine-color); margin-bottom: 20px;"></i>
+                <h3>Grazie!</h3>
+                <p class="step-instruction">La vostra conferma è stata ricevuta.</p>
+                <a href="index.html" class="huge-btn" style="display: inline-block; text-decoration: none; margin-top:20px;">Torna alla Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATABASE INVITATI (SIMULATO) ---
+        const guestDatabase = [
+            {
+                id: 1,
+                familyName: "Famiglia Rossi",
+                members: ["Mario Rossi", "Giulia Bianchi", "Luca Rossi"]
+            },
+            {
+                id: 2,
+                familyName: "Famiglia Verdi",
+                members: ["Giuseppe Verdi", "Anna Verdi"]
+            },
+            {
+                id: 3,
+                familyName: "Single Esempio",
+                members: ["Alessandro Manzoni"]
+            }
+        ];
+
+        let currentFamily = null;
+        let confirmedGuests = [];
+
+        // --- FUNZIONI NAVIGAZIONE ---
+        function updateProgress(percent) {
+            document.getElementById('progressBar').style.width = percent + '%';
+        }
+
+        function showStep(stepId) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(stepId).classList.add('active');
+        }
+
+        function prevStep(targetStep) {
+            if(targetStep === 1) {
+                showStep('step1');
+                updateProgress(25);
+            } else if (targetStep === 2) {
+                showStep('step2');
+                updateProgress(50);
+            }
+        }
+
+        // --- STEP 1: RICERCA ---
+        function searchGuest() {
+            const input = document.getElementById('searchInput').value.toLowerCase().trim();
+            const errorMsg = document.getElementById('searchError');
+            
+            if (input.length < 3) {
+                errorMsg.innerText = "Inserisci almeno 3 lettere.";
+                return;
+            }
+
+            const foundFamily = guestDatabase.find(family => 
+                family.members.some(member => member.toLowerCase().includes(input))
+            );
+
+            if (foundFamily) {
+                currentFamily = foundFamily;
+                errorMsg.innerText = "";
+                renderFamilyList();
+                showStep('step2');
+                updateProgress(50);
+            } else {
+                errorMsg.innerText = "Nessun invito trovato. Prova con un altro nome.";
+            }
+        }
+
+        // --- STEP 2: RENDER LISTA ---
+        function renderFamilyList() {
+            const container = document.getElementById('familyList');
+            container.innerHTML = ""; 
+
+            currentFamily.members.forEach((member, index) => {
+                const div = document.createElement('div');
+                div.className = 'guest-row';
+                div.innerHTML = `
+                    <span class="guest-name">${member}</span>
+                    <div class="attendance-options">
+                        <label>
+                            <input type="radio" name="attend_${index}" value="yes" checked> Ci sarò
+                        </label>
+                        <label>
+                            <input type="radio" name="attend_${index}" value="no"> Non ci sarò
+                        </label>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // --- STEP 3: DIETA (LOGICA CHECKBOX INTELLIGENTE) ---
+        function goToDietStep() {
+            confirmedGuests = [];
+            const container = document.getElementById('dietList');
+            container.innerHTML = "";
+            let anyoneComing = false;
+
+            currentFamily.members.forEach((member, index) => {
+                const radios = document.getElementsByName(`attend_${index}`);
+                let isComing = false;
+                for (let r of radios) {
+                    if (r.checked && r.value === 'yes') isComing = true;
+                }
+
+                if (isComing) {
+                    anyoneComing = true;
+                    confirmedGuests.push({ name: member }); 
+                    
+                    const div = document.createElement('div');
+                    div.className = 'diet-row';
+                    // Checkbox "Nessuna esigenza" aggiunto
+                    div.innerHTML = `
+                        <p style="margin-bottom:15px; font-weight:bold; font-size:1.1rem; color:var(--wine-dark);">${member}</p>
+                        <div class="diet-checkbox-group">
+                            <label class="diet-checkbox-label">
+                                <input type="checkbox" id="none_${index}" checked onchange="handleNoneLogic(${index})"> Nessuna esigenza alimentare
+                            </label>
+                            <label class="diet-checkbox-label">
+                                <input type="checkbox" id="veg_${index}" onchange="handleSpecialLogic(${index}, 'veg')"> Vegetariano
+                            </label>
+                            <label class="diet-checkbox-label">
+                                <input type="checkbox" id="vegan_${index}" onchange="handleSpecialLogic(${index}, 'vegan')"> Vegano
+                            </label>
+                            <label class="diet-checkbox-label">
+                                <input type="checkbox" id="intol_${index}" onchange="handleSpecialLogic(${index}, 'intol')"> Intolleranze / Allergie
+                            </label>
+                            <input type="text" id="intol_text_${index}" class="intolerance-input" placeholder="Specifica (es. Glutine, Lattosio...)">
+                        </div>
+                        <hr style="border:0; border-top:1px solid #ddd; margin-top:20px; margin-bottom:20px;">
+                    `;
+                    container.appendChild(div);
+                }
+            });
+
+            if (!anyoneComing) {
+                if(confirm("Nessuno presente. Confermi?")) submitRSVP();
+            } else {
+                showStep('step3');
+                updateProgress(75);
+            }
+        }
+
+        // LOGICA: Se clicco "Nessuna", disattivo le altre
+        function handleNoneLogic(index) {
+            const noneBox = document.getElementById(`none_${index}`);
+            if (noneBox.checked) {
+                document.getElementById(`veg_${index}`).checked = false;
+                document.getElementById(`vegan_${index}`).checked = false;
+                
+                // Intolleranze
+                const intolBox = document.getElementById(`intol_${index}`);
+                intolBox.checked = false;
+                
+                // Nascondi testo
+                const textInput = document.getElementById(`intol_text_${index}`);
+                textInput.style.display = 'none';
+                textInput.value = '';
+            }
+        }
+
+        // LOGICA: Se clicco una specifica, disattivo "Nessuna"
+        function handleSpecialLogic(index, type) {
+            const noneBox = document.getElementById(`none_${index}`);
+            const currentBox = document.getElementById(`${type}_${index}`);
+            
+            // Se attivo una specifica, "Nessuna" va via
+            if (currentBox.checked) {
+                noneBox.checked = false;
+            }
+
+            // Logica Vegano vs Vegetariano
+            if (type === 'veg' && currentBox.checked) {
+                document.getElementById(`vegan_${index}`).checked = false; 
+            } else if (type === 'vegan' && currentBox.checked) {
+                document.getElementById(`veg_${index}`).checked = false; 
+            }
+
+            // Gestione campo testo intolleranze
+            if (type === 'intol') {
+                const textInput = document.getElementById(`intol_text_${index}`);
+                if (currentBox.checked) {
+                    textInput.style.display = 'block';
+                    textInput.focus();
+                } else {
+                    textInput.style.display = 'none';
+                    textInput.value = ''; 
+                }
+            }
+            
+            // Se deseleziono tutto, rimetto "Nessuna"? (Opzionale, meglio di no per libertà utente)
+        }
+
+        // --- STEP 4: INVIO ---
+        function submitRSVP() {
+            let finalData = [];
+
+            currentFamily.members.forEach((member, originalIndex) => {
+                const isPresent = confirmedGuests.find(g => g.name === member);
+                
+                if (isPresent) {
+                    let notes = [];
+                    
+                    // Se "Nessuna" è checkato
+                    if(document.getElementById(`none_${originalIndex}`).checked) {
+                        notes.push("Nessuna esigenza");
+                    } else {
+                        if(document.getElementById(`veg_${originalIndex}`).checked) notes.push("Vegetariano");
+                        if(document.getElementById(`vegan_${originalIndex}`).checked) notes.push("Vegano");
+                        
+                        const intolCheck = document.getElementById(`intol_${originalIndex}`);
+                        if(intolCheck.checked) {
+                            const detail = document.getElementById(`intol_text_${originalIndex}`).value;
+                            notes.push(`Intolleranze: ${detail || 'Generiche'}`);
+                        }
+                    }
+                    
+                    // Fallback se uno toglie tutte le spunte
+                    if (notes.length === 0) notes.push("Nessuna esigenza specificata");
+
+                    finalData.push({
+                        name: member,
+                        notes: notes.join(", ")
+                    });
+                }
+            });
+
+            console.log("DATI FINALI DA INVIARE:", finalData);
+            updateProgress(100);
+            showStep('step4');
+        }
+    </script>
+</body>
+</html>

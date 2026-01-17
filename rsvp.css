@@ -1,0 +1,220 @@
+/* <=================== RSVP.CSS - SOLO PAGINA FORM ===================> */
+
+.rsvp-page-body {
+    background-color: var(--bg-sage);
+    padding-top: 100px;
+}
+
+.rsvp-container-page {
+    max-width: 1500px;
+    margin: 0 auto 50px auto;
+    background: var(--bg-sage);
+    padding: 20px;
+}
+
+.rsvp-container {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    background: var(--bg-sage);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* TITOLO RSVP */
+.rsvp-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 450px) {
+    .rsvp-title {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* BARRA DI PROGRESSO */
+.progress-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 25%; 
+    background-color: var(--wine-color);
+    transition: width 0.5s ease;
+}
+
+/* STEPS & ISTRUZIONI */
+.form-step {
+    display: none; 
+    animation: fadeIn 0.5s;
+}
+
+.form-step.active {
+    display: block; 
+}
+
+.title-instruction {
+    font-size: 1.15rem;
+    text-align: center;
+    color: var(--wine-dark);
+}
+
+
+.step-instruction {
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--wine-dark);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SEARCH BOX */
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+    margin-top: 30px;
+    margin-bottom: 10px;
+    flex-wrap: wrap; 
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 250px;
+    padding: 15px 30px;
+    border: 1px solid var(--wine-color);
+    border-radius: 50px;
+    background-color: white;
+    color: var(--wine-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.search-box input:focus {
+    box-shadow: 0 0 15px rgba(92, 26, 32, 0.2);
+    transform: scale(1.02);
+}
+
+.search-box input::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.error-msg {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    min-height: 20px;
+}
+
+/* LISTA OSPITI */
+.guest-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.guest-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--wine-dark);
+}
+
+.attendance-options label {
+    margin-left: 15px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+/* DIETA & CHECKBOX */
+.diet-row {
+    margin-bottom: 15px;
+}
+
+.diet-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.diet-checkbox-label {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.diet-checkbox-label input {
+    margin-right: 10px;
+    width: 18px; 
+    height: 18px;
+    accent-color: var(--wine-color);
+}
+
+.intolerance-input {
+    display: none;
+    margin-top: 5px;
+    margin-left: 28px;
+    padding: 8px;
+    width: calc(100% - 30px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* BOTTONI NAVIGAZIONE */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.nav-buttons .huge-btn {
+    margin: 0; 
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid #666;
+    color: #666;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+.secondary-btn:hover {
+    background: #eee;
+}
+
+@media (max-width: 600px) {
+    .search-box { flex-direction: column; }
+    .guest-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .attendance-options { width: 100%; display: flex; justify-content: space-between; }
+    .nav-buttons { flex-direction: column-reverse; gap: 15px; }
+    .nav-buttons button { width: 100%; margin: 0; }
+}
