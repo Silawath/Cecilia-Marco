@@ -189,85 +189,85 @@ a:hover{
     display: none;
 }
 
-/* --- FOOTER --- */
+/* <=================== FOOTER (CORRETTO) ===================> */
 footer {
     background-color: var(--wine-color-light);
     color: white;
-    padding: 40px 20px;
+    padding: 60px 20px; /* Un po' più di spazio verticale */
+    
+    /* FLEXBOX */
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 30px;
+    justify-content: space-between; /* Spinge ai lati */
+    align-items: flex-start; /* FONDAMENTALE: Allinea tutto in alto */
+    flex-wrap: wrap; /* Permette di andare a capo se non c'è spazio */
+    gap: 40px; /* Spazio tra le colonne */
 }
 
+/* Colonna generica */
 .footer-col {
-    flex: 1;
-    min-width: 250px;
-    text-align: center;
+    flex: 1; /* Le colonne si dividono lo spazio */
+    min-width: 250px; /* Larghezza minima prima di andare a capo */
 }
 
-.footer-col.left { text-align: left; }
-.footer-col.right { text-align: right; }
-.footer-col h3 { color: white; font-size: 1.1rem; margin-bottom: 10px; }
-.footer-col p { color: #eee; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; margin-bottom: 5px; }
+/* Allineamenti Desktop */
+.footer-col.left { 
+    text-align: left; 
+}
+
+.footer-col.center { 
+    text-align: center; 
+}
+
+.footer-col.right { 
+    text-align: right; 
+}
+
+/* Testi Footer */
+.footer-col h3 { 
+    color: white; 
+    font-size: 1.2rem; 
+    margin-bottom: 15px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col p { 
+    color: #f0f0f0; 
+    font-size: 0.95rem; 
+    font-family: 'Montserrat', sans-serif; 
+    margin-bottom: 8px; 
+    line-height: 1.6;
+}
 
 .footer a {
     color: white;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 2px;
     transition: 0.3s;
 }
 
-/* --- REGOLE MOBILE SPECIFICHE --- */
-@media (max-width: 950px){
-    label.logo{ font-size: 24px; }
-    nav ul li a{ font-size: 12px; }
+.footer a:hover {
+    color: #ddd;
+    border-bottom-color: #ddd;
+    opacity: 0.8;
 }
 
-@media (max-width: 768px){
-    /* Navbar Mobile a Tendina */
-    .checkbtn {
-        display: block; /* Mostra icona hamburger */
-        line-height: var(--nav-height); /* Centra verticalmente */
-        margin-right: 0;
-    }
-    
-    ul {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--wine-color-light); /* Sfondo menu */
-        top: var(--nav-height);
-        left: -100%; /* Nascosto a sinistra */
+/* <=================== MEDIA QUERY FOOTER MOBILE ===================> */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column; /* Impila tutto in verticale */
+        align-items: center; /* Centra tutto */
         text-align: center;
-        transition: all .5s;
-        z-index: 999;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    nav ul li {
-        display: block;
-        margin: 20px 0;
-    }
-    
-    nav ul li a {
-        font-size: 20px; /* Testo menu più grande su mobile */
-        display: block;
-    }
-    
-    #check:checked ~ ul {
-        left: 0; /* Mostra menu quando cliccato */
+        gap: 50px; /* Più spazio tra i blocchi su mobile */
     }
 
-    /* Footer Mobile: Tutto in colonna */
-    footer {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-col.left, .footer-col.right {
-        text-align: center;
+    /* Forza l'allineamento centrale su mobile per tutti */
+    .footer-col.left, 
+    .footer-col.center, 
+    .footer-col.right { 
+        text-align: center; 
+        width: 100%; /* Occupa tutta la larghezza */
+        min-width: 0; /* Evita problemi di overflow */
     }
 }
