@@ -1,13 +1,12 @@
 /* <=================== STYLE.CSS - GLOBALE ===================> */
 
-/* --- VARIABILI & COLORI (RESPONSIVE) --- */
+/* --- VARIABILI & COLORI --- */
 :root{
-    /* Misure per PC */
     --h1-size: 4rem;
     --h2-size: 2.2rem;
     --h3-size: 1.8rem;
     --text-size: 1.1rem;
-    --horizontal-margin-spacing: 6rem; /* Margine largo su PC */
+    --horizontal-margin-spacing: 6rem;
     
     /* Colori tema */
     --bg-sage: rgb(244, 233, 211); 
@@ -20,14 +19,14 @@
     --nav-height: 80px; 
 }
 
-/* MEDIA QUERY: CAMBIA LE VARIABILI SU MOBILE */
-@media (max-width: 768px) {
+/* Rimpicciolisco font e margini su schermi medi/piccoli */
+@media (max-width: 1024px) {
     :root {
-        --h1-size: 2.8rem;  /* Titoli più piccoli */
+        --h1-size: 2.8rem;
         --h2-size: 1.8rem;
         --h3-size: 1.4rem;
         --text-size: 1rem;
-        --horizontal-margin-spacing: 1.5rem; /* Margine stretto su mobile */
+        --horizontal-margin-spacing: 1.5rem;
         --nav-height: 60px;
     }
 }
@@ -42,7 +41,7 @@
 html{
     scroll-behavior: smooth;
     background-color: var(--bg-sage); 
-    overflow-x: hidden; /* Evita lo scroll orizzontale indesiderato */
+    overflow-x: hidden;
 }
 
 body {
@@ -129,7 +128,7 @@ h3{
     box-shadow: 0 5px 15px rgba(92, 26, 32, 0.2);
 }
 
-/* --- NAVBAR --- */
+/* --- NAVBAR DESKTOP --- */
 nav{
     height: var(--nav-height);
     width: 100%;
@@ -155,11 +154,14 @@ label.logo{
 
 nav ul{
     list-style: none;
+    display: flex; /* Flexbox anche per il menu desktop */
 }
+
 nav ul li{
     display: inline-block;
     margin: 0 5px;
 }
+
 nav ul li a{
     font-family: 'Cinzel', serif;
     font-size: 14px;
@@ -175,99 +177,100 @@ a:hover{
     transition: .5s;
 }
 
-/* Icona Hamburger */
+/* Icona Hamburger (Nascosta di base) */
 .checkbtn{
     font-size: 30px;
     color: white;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
     cursor: pointer;
-    display: none; /* Nascosto su PC */
+    display: none; 
 }
 #check{
     display: none;
 }
 
-/* <=================== FOOTER (CORRETTO) ===================> */
+/* --- FOOTER --- */
 footer {
     background-color: var(--wine-color-light);
     color: white;
-    padding: 60px 20px; /* Un po' più di spazio verticale */
-    
-    /* FLEXBOX */
+    padding: 60px 20px;
     display: flex;
-    justify-content: space-between; /* Spinge ai lati */
-    align-items: flex-start; /* FONDAMENTALE: Allinea tutto in alto */
-    flex-wrap: wrap; /* Permette di andare a capo se non c'è spazio */
-    gap: 40px; /* Spazio tra le colonne */
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-/* Colonna generica */
 .footer-col {
-    flex: 1; /* Le colonne si dividono lo spazio */
-    min-width: 250px; /* Larghezza minima prima di andare a capo */
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
 }
 
-/* Allineamenti Desktop */
-.footer-col.left { 
-    text-align: left; 
-}
+.footer-col.left { text-align: left; }
+.footer-col.center { text-align: center; }
+.footer-col.right { text-align: right; }
 
-.footer-col.center { 
-    text-align: center; 
-}
-
-.footer-col.right { 
-    text-align: right; 
-}
-
-/* Testi Footer */
 .footer-col h3 { 
     color: white; 
     font-size: 1.2rem; 
     margin-bottom: 15px; 
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-transform: uppercase; 
 }
-
 .footer-col p { 
     color: #f0f0f0; 
     font-size: 0.95rem; 
     font-family: 'Montserrat', sans-serif; 
     margin-bottom: 8px; 
-    line-height: 1.6;
+    line-height: 1.6; 
 }
 
 .footer a {
     color: white;
     text-decoration: none;
     border-bottom: 1px solid rgba(255,255,255,0.4);
-    padding-bottom: 2px;
     transition: 0.3s;
-}
-
-.footer a:hover {
-    color: #ddd;
-    border-bottom-color: #ddd;
-    opacity: 0.8;
 }
 
 /* <=================== MEDIA QUERY FOOTER MOBILE ===================> */
 @media (max-width: 768px) {
     footer {
-        flex-direction: column; /* Impila tutto in verticale */
-        align-items: center; /* Centra tutto */
+        /* Manteniamo 'row' per permettere l'affiancamento, ma usiamo 'wrap' per andare a capo */
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: center;
         text-align: center;
-        gap: 50px; /* Più spazio tra i blocchi su mobile */
+        gap: 20px; /* Spazio verticale tra blocco sopra e blocco sotto */
+        padding-bottom: 40px; /* Spazio extra in fondo per lo scroll */
     }
 
-    /* Forza l'allineamento centrale su mobile per tutti */
+    /* 1. IL BLOCCO CENTRALE VA SOPRA A TUTTO */
+    .footer-col.center { 
+        order: 1;       /* Diventa il primo visivamente */
+        width: 100%;    /* Occupa tutta la larghezza */
+        margin-bottom: 10px; /* Stacca dai nomi sotto */
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Separatore sottile opzionale */
+        padding-bottom: 20px;
+    }
+
+    /* 2. I BLOCCHI LATERALI VANNO SOTTO E AFFIANCATI */
     .footer-col.left, 
-    .footer-col.center, 
     .footer-col.right { 
-        text-align: center; 
-        width: 100%; /* Occupa tutta la larghezza */
-        min-width: 0; /* Evita problemi di overflow */
+        order: 2;       /* Diventano secondi */
+        width: 45%;     /* Occupano poco meno della metà ciascuno */
+        min-width: auto; /* Rimuove il blocco larghezza minima del PC */
+        text-align: center;
+        padding: 0 5px; /* Un po' di margine interno */
+    }
+    
+    /* Ridimensiona leggermente i testi per farli stare affiancati */
+    .footer-col.left h3,
+    .footer-col.right h3 {
+        font-size: 1rem; /* Nomi un po' più piccoli */
+        margin-bottom: 5px;
+    }
+    
+    .footer-col.left p,
+    .footer-col.right p {
+        font-size: 0.85rem; /* Numeri più piccoli */
     }
 }
