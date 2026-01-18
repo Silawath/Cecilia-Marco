@@ -1,6 +1,6 @@
 /* <=================== HOME.CSS - SOLO HOME PAGE ===================> */
 
-/* INTRO ACQUERELLO (Usato solo in Home) */
+/* INTRO ACQUERELLO */
 #intro-overlay {
     position: fixed;
     top: 0;
@@ -28,12 +28,7 @@
     animation: gentleZoom 20s infinite alternate;
 }
 
-.intro-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 20px;
-}
+.intro-content { position: relative; z-index: 10; text-align: center; padding: 20px; }
 
 .intro-names {
     font-family: 'Great Vibes', cursive !important;
@@ -73,35 +68,31 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-.intro-btn:hover {
-    background-color: var(--wine-color);
-    color: white;
-}
+.intro-btn:hover { background-color: var(--wine-color); color: white; }
 .fade-out { opacity: 0; visibility: hidden; }
 @keyframes gentleZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-/* <=================== HERO SECTION  ===================> */
+/* <=================== HERO SECTION ===================> */
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* Occupa tutta l'altezza dello schermo */
+    min-height: 100vh; 
     
     background-image: url('img/foto15.jpeg'); 
-    background-size: cover; /* Copre tutto lo spazio */
-    background-position: center; /* Centra la foto */
-    background-attachment: fixed; /* Effetto parallasse */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white; /* Testo base bianco */
+    color: white;
     padding: 20px;
-    margin: 0; /* Rimuove margini esterni */
+    margin: 0;
 }
 
-/* OVERLAY SCURO (Per leggere il testo) */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -109,32 +100,23 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Filtro scuro al 40% */
+    background: rgba(0, 0, 0, 0.4); 
     z-index: 1;
 }
 
-/* Assicura che il testo stia SOPRA il filtro scuro */
-.hero-section > * {
-    position: relative;
-    z-index: 2;
-}
+.hero-section > * { position: relative; z-index: 2; }
+.hero-photo-container { display: none; }
 
-/* Rimuoviamo il vecchio contenitore se presente nel CSS */
-.hero-photo-container {
-    display: none;
-}
-
-/* STILE TESTI SU SFONDO FOTO */
 .hero-section h1 {
     color: white;
-    font-size: 5rem; /* Titolo più grande e impattante */
-    text-shadow: 2px 2px 15px rgba(0,0,0,0.6); /* Ombra per leggibilità */
+    font-size: 5rem;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
     margin-bottom: 10px;
     line-height: 1.1;
 }
 
 .hero-section h3 {
-    color: #f4e9d3; /* Un colore crema chiaro per il sottotitolo */
+    color: #f4e9d3;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
     font-size: 2rem;
     letter-spacing: 3px;
@@ -158,7 +140,7 @@
     font-weight: 400;
 }
 
-/* <=================== COUNTDOWN ===================> */
+/* COUNTDOWN */
 #countdown {
     display: flex;
     justify-content: center;
@@ -169,12 +151,12 @@
 
 .time-box {
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.6); /* Bordo bianco sottile */
+    border: 1px solid rgba(255, 255, 255, 0.6);
     padding: 15px 25px;
     border-radius: 15px;
     min-width: 90px;
-    background: rgba(0,0,0,0.3); /* Sfondo semitrasparente */
-    backdrop-filter: blur(5px); /* Effetto sfocato dietro */
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
@@ -223,190 +205,93 @@
     display: block;
 }
 
-.location-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(92, 26, 32, 0.2);
-}
-
-.card-image {
-    width: 100%;
-    height: 250px; 
-    position: relative;
-    overflow: hidden;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    transition: transform 0.5s ease;
-}
-
-.location-card:hover .card-image img {
-    transform: scale(1.05); 
-}
+.location-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(92, 26, 32, 0.2); }
+.card-image { width: 100%; height: 250px; position: relative; overflow: hidden; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.location-card:hover .card-image img { transform: scale(1.05); }
 
 .card-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: var(--wine-color);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 0.9rem;
+    position: absolute; top: 15px; right: 15px;
+    background-color: var(--wine-color); color: white;
+    padding: 5px 15px; border-radius: 20px;
+    font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.9rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-.card-content {
-    padding: 25px;
-    text-align: center;
-}
-
-.card-content h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.6rem;
-}
-
-.venue-name {
-    font-family: 'Cinzel', serif;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 5px;
-}
-
-.venue-address {
-    font-family: 'Montserrat', sans-serif;
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-}
-
+.card-content { padding: 25px; text-align: center; }
+.card-content h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.6rem; }
+.venue-name { font-family: 'Cinzel', serif; font-weight: bold; font-size: 1.1rem; color: var(--text-color); margin-bottom: 5px; }
+.venue-address { font-family: 'Montserrat', sans-serif; color: #666; font-size: 0.95rem; margin-bottom: 20px; }
 .click-cta {
-    display: inline-block;
-    color: var(--wine-color);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid transparent;
-    transition: 0.3s;
+    display: inline-block; color: var(--wine-color);
+    font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.9rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    border-bottom: 1px solid transparent; transition: 0.3s;
 }
+.location-card:hover .click-cta { border-bottom: 1px solid var(--wine-color); }
 
-.location-card:hover .click-cta {
-    border-bottom: 1px solid var(--wine-color);
-}
-
-/* SEZIONE RSVP (TEASER IN HOME) */
-.rsvp-section {
-    background-color: var(--bg-sage);
-    padding: 80px 20px;
-    width: 100%;
-}
-
-/* SEZIONE REGALO */
-.gift-section {
-    background-color: var(--bg-sage-light);
-    text-align: center;
-    padding: 80px 20px;
-    width: 100%;
-}
+/* SEZIONI RSVP & REGALO */
+.rsvp-section { background-color: var(--bg-sage); padding: 80px 20px; width: 100%; }
+.gift-section { background-color: var(--bg-sage-light); text-align: center; padding: 80px 20px; width: 100%; }
 
 .iban-card {
-    background-color: white;
-    padding: 30px;
-    max-width: 600px;
-    margin: 20px auto 60px auto;
-    border: 2px dashed var(--wine-color);
-    border-radius: 10px;
+    background-color: white; padding: 30px;
+    max-width: 600px; margin: 20px auto 60px auto;
+    border: 2px dashed var(--wine-color); border-radius: 10px;
 }
-
 .iban-label { font-weight: bold; font-size: 1.2rem; color: var(--wine-color); }
 .iban-number { font-family: 'Montserrat', monospace; font-size: 1.3rem; margin: 10px 0; word-break: break-all; font-weight: bold; }
 
-/* <=================== MOSAICO MASONRY ===================> */
+/* MOSAICO MASONRY */
 .mosaic-section {
-    width: 100%;
-    max-width: 1200px; /* Larghezza massima contenitore */
-    margin: 0 auto; /* Centrato */
-    padding: 60px 20px 100px 20px;
-    background: transparent;
+    width: 100%; max-width: 1200px; margin: 0 auto;
+    padding: 60px 20px 100px 20px; background: transparent;
 }
 
-.mosaic-grid {
-    column-count: 4; 
-    column-gap: 15px; 
-}
+.mosaic-grid { column-count: 4; column-gap: 15px; }
 
 .mosaic-item {
-    break-inside: avoid; 
-    margin-bottom: 15px; 
-    border-radius: 8px; 
-    overflow: hidden; 
-    position: relative;
+    break-inside: avoid; margin-bottom: 15px;
+    border-radius: 8px; overflow: hidden; position: relative;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 0.3s ease;
 }
+.mosaic-item img { width: 100% !important; height: auto !important; display: block; }
+.mosaic-item:hover { transform: scale(1.02); z-index: 2; }
 
-.mosaic-item img {
-    width: 100% !important; 
-    height: auto !important; 
-    display: block; 
-}
-
-.mosaic-item:hover {
-    transform: scale(1.02); 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    z-index: 2; 
-}
 
 /* <=================== MEDIA QUERY SPECIFICHE HOME ===================> */
 @media (max-width: 768px) {
-    /* HERO MOBILE: Sfondo non fisso e testi piccoli */
+    /* HERO MOBILE */
     .hero-section {
-        background-attachment: scroll; /* Fondamentale per mobile */
+        background-attachment: scroll; 
         min-height: 85vh;
-        padding-top: 80px; /* Spazio per navbar */
+        padding-top: 80px; 
     }
     
     .hero-section h1 { font-size: 3rem; }
     .hero-section h3 { font-size: 1.5rem; }
     .intro-names { font-size: 3.5rem; }
 
-    /* COUNTDOWN ADATTATO PER STARE SU UNA RIGA */
+    /* COUNTDOWN LINEARE */
     #countdown {
-        gap: 8px; /* Spazio molto ridotto tra i box */
-        flex-wrap: nowrap; /* FORZA a non andare a capo */
-        width: 100%; /* Occupa tutto lo spazio disponibile */
-        padding: 0 10px; /* Piccolo margine dai bordi schermo */
+        gap: 8px; 
+        flex-wrap: nowrap; 
+        width: 100%; 
+        padding: 0 10px; 
     }
 
     .time-box { 
-        min-width: auto; /* Rimuove limite larghezza minima */
-        flex: 1; /* I box si dividono lo spazio equamente */
-        padding: 10px 5px; /* Padding interno ridotto */
+        min-width: auto; 
+        flex: 1; 
+        padding: 10px 5px; 
         margin: 0; 
     }
     
-    .time-box span { 
-        font-size: 1.3rem; /* Font più piccolo */
-    }
-    
-    .time-box small {
-        font-size: 0.6rem; /* Scritte Giorni/Ore minuscole */
-    }
+    .time-box span { font-size: 1.3rem; }
+    .time-box small { font-size: 0.6rem; }
     
     /* MOSAICO 2 COLONNE */
-    .mosaic-grid {
-        column-count: 2; 
-        column-gap: 10px;
-    }
-    .mosaic-item {
-        margin-bottom: 10px;
-    }
+    .mosaic-grid { column-count: 2; column-gap: 10px; }
+    .mosaic-item { margin-bottom: 10px; }
 }

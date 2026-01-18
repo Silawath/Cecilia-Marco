@@ -20,8 +20,14 @@
     border-radius: 10px;
 }
 
+/* TITOLO RSVP - MODIFICA IMPORTANTE */
 .rsvp-title {
-    white-space: nowrap;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--wine-dark);
+    font-weight: bold;
+    /* Su PC sta su una riga, se c'è spazio */
+    white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -127,7 +133,13 @@
 @media (max-width: 600px) {
     .rsvp-container { padding: 15px; margin-top: 20px; }
     
-    .rsvp-title { font-size: 1.5rem !important; }
+    /* FIX TITOLO RSVP: Va a capo su mobile */
+    .rsvp-title { 
+        font-size: 1.8rem !important; 
+        white-space: normal; /* Permette a capo */
+        overflow: visible;   /* Mostra tutto */
+        text-overflow: clip; /* Toglie i puntini */
+    }
 
     /* Barra ricerca a capo */
     .search-box { flex-direction: column; width: 100%; }

@@ -12,6 +12,11 @@
 <body class="rsvp-page-body">
 
     <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+
         <label class="logo"><a href="index.html" style="color:var(--white); text-decoration:none;">C&M</a></label>
         <ul class="text">
             <li><a href="index.html#location">Location</a></li>
@@ -26,6 +31,7 @@
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
+        
         <h2 class="rsvp-title">Conferma la tua presenza</h2>
         
         <div class="rsvp-container">
@@ -69,6 +75,30 @@
             </div>
         </div>
     </div>
+
+    <footer id="contatti">
+        <div class="footer-col left">
+            <h3>Cecilia Terranova</h3>
+            <p>Tel: +39 329 9865945</p>
+        </div>
+
+        <div class="footer-col center">
+            <h2 style="font-size: 1.5rem; margin-bottom: 10px; color: white;">Cecilia & Marco</h2>
+            <div class="text" style="color: #eee; margin-bottom: 15px;">27 Giugno 2026</div>
+            
+            <p>Per qualsiasi informazione scrivici a:</p>
+            <p style="margin-top: 5px;">
+                <a href="mailto:marcoececilia2023@gmail.com" style="font-size: 1.2rem; color: #eee;">
+                    marcoececilia2023@gmail.com
+                </a>
+            </p>
+        </div>
+
+        <div class="footer-col right">
+            <h3>Marco Parmeggiani</h3> 
+            <p>Tel: +39 320 4143614</p>
+        </div>
+    </footer>
 
     <script>
         // --- DATABASE INVITATI (SIMULATO) ---
@@ -161,7 +191,7 @@
             });
         }
 
-        // --- STEP 3: DIETA (LOGICA CHECKBOX INTELLIGENTE) ---
+        // --- STEP 3: DIETA ---
         function goToDietStep() {
             confirmedGuests = [];
             const container = document.getElementById('dietList');
@@ -213,42 +243,36 @@
             }
         }
 
-        // LOGICA: Se clicco "Nessuna", disattivo le altre
+        // LOGICHE CHECKBOX
         function handleNoneLogic(index) {
             const noneBox = document.getElementById(`none_${index}`);
             if (noneBox.checked) {
                 document.getElementById(`veg_${index}`).checked = false;
                 document.getElementById(`vegan_${index}`).checked = false;
                 
-                // Intolleranze
                 const intolBox = document.getElementById(`intol_${index}`);
                 intolBox.checked = false;
                 
-                // Nascondi testo
                 const textInput = document.getElementById(`intol_text_${index}`);
                 textInput.style.display = 'none';
                 textInput.value = '';
             }
         }
 
-        // LOGICA: Se clicco una specifica, disattivo "Nessuna"
         function handleSpecialLogic(index, type) {
             const noneBox = document.getElementById(`none_${index}`);
             const currentBox = document.getElementById(`${type}_${index}`);
             
-            // Se attivo una specifica, "Nessuna" va via
             if (currentBox.checked) {
                 noneBox.checked = false;
             }
 
-            // Logica Vegano vs Vegetariano
             if (type === 'veg' && currentBox.checked) {
                 document.getElementById(`vegan_${index}`).checked = false; 
             } else if (type === 'vegan' && currentBox.checked) {
                 document.getElementById(`veg_${index}`).checked = false; 
             }
 
-            // Gestione campo testo intolleranze
             if (type === 'intol') {
                 const textInput = document.getElementById(`intol_text_${index}`);
                 if (currentBox.checked) {
@@ -259,8 +283,6 @@
                     textInput.value = ''; 
                 }
             }
-            
-            // Se deseleziono tutto, rimetto "Nessuna"? (Opzionale, meglio di no per libertà utente)
         }
 
         // --- STEP 4: INVIO ---
@@ -273,7 +295,6 @@
                 if (isPresent) {
                     let notes = [];
                     
-                    // Se "Nessuna" è checkato
                     if(document.getElementById(`none_${originalIndex}`).checked) {
                         notes.push("Nessuna esigenza");
                     } else {
@@ -287,7 +308,6 @@
                         }
                     }
                     
-                    // Fallback se uno toglie tutte le spunte
                     if (notes.length === 0) notes.push("Nessuna esigenza specificata");
 
                     finalData.push({
