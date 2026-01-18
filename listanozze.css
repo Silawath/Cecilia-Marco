@@ -7,7 +7,7 @@
     max-width: 1500px;
     margin: 0 auto 50px auto;
     background: var(--bg-sage);
-    padding: 50px;
+    padding: 30px;
 }
 
 .ln-container {
@@ -84,4 +84,33 @@
     font-size: 0.95rem;
     color: #555;
     line-height: 1.5;
+}
+
+/* AGGIUNGI IN FONDO A listanozze.css */
+
+@media (max-width: 768px) {
+    /* Riduciamo il padding del contenitore principale */
+    .ln-container-page {
+        padding: 20px 15px; /* Molto meno spazio ai lati */
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    /* Adattiamo la griglia delle esperienze */
+    .experiences-grid {
+        grid-template-columns: 1fr; /* Una colonna singola su mobile */
+        gap: 20px;
+    }
+
+    /* Sistemiamo il titolo */
+    .ln-container-page h1 {
+        font-size: 1.8rem !important; /* Titolo più piccolo */
+        margin-top: 0;
+    }
+    
+    /* Testo più leggibile */
+    .text-content {
+        padding: 0 !important; /* Rimuove padding extra del testo */
+        text-align: justify; /* Opzionale: giustifica il testo */
+    }
 }
