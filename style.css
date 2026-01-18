@@ -128,15 +128,15 @@ h3{
     box-shadow: 0 5px 15px rgba(92, 26, 32, 0.2);
 }
 
-/* --- NAVBAR DESKTOP --- */
-nav{
-    height: var(--nav-height);
+/* --- NAVBAR STILE BASE (PC) --- */
+nav {
+    height: 80px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
-    background-color: var(--wine-color-light);
+    z-index: 9999; /* Z-index altissimo per stare sopra a tutto */
+    background-color: var(--wine-color-light); /* O il colore che preferisci */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
@@ -144,48 +144,73 @@ nav{
     padding: 0 30px;
 }
 
-label.logo{
-    font-family: 'Cinzel', serif;
+label.logo a {
     font-size: 28px;
     font-weight: bold;
-    color: var(--white);
-    cursor: pointer;
-}
-
-nav ul{
-    list-style: none;
-    display: flex; /* Flexbox anche per il menu desktop */
-}
-
-nav ul li{
-    display: inline-block;
-    margin: 0 5px;
-}
-
-nav ul li a{
-    font-family: 'Cinzel', serif;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 7px 13px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--white);
-}
-a:hover{
-    color: #ddd;
-    transition: .5s;
-}
-
-/* Icona Hamburger (Nascosta di base) */
-.checkbtn{
-    font-size: 30px;
     color: white;
-    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 7px 13px;
+    font-family: 'Cinzel', serif;
+}
+
+/* NASCONDIAMO GLI ELEMENTI MOBILE SU PC */
+.checkbtn {
     display: none; 
 }
-#check{
+#check {
     display: none;
+}
+
+/* <=== MEDIA QUERY MOBILE (Sotto 1024px appare l'hamburger) ===> */
+@media (max-width: 1024px) {
+    
+    /* 1. MOSTRA L'ICONA HAMBURGER */
+    .checkbtn {
+        display: block;
+        font-size: 30px;
+        color: white; /* Assicurati che sia bianco per vedersi sul fondo scuro */
+        cursor: pointer;
+        order: 2; /* Spingiamola a destra se serve */
+    }
+
+    /* 2. MENU A TENDINA */
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--wine-color-light); /* Stesso colore della navbar */
+        top: 80px; /* Deve essere uguale all'altezza della nav */
+        left: -100%; /* Nascosto fuori schermo */
+        text-align: center;
+        transition: all 0.5s;
+        flex-direction: column; /* Link in verticale */
+        justify-content: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 30px 0;
+    }
+
+    nav ul li a {
+        font-size: 20px; /* Link più grandi */
+    }
+
+    /* 3. LOGICA DI APERTURA */
+    #check:checked ~ ul {
+        left: 0; /* Fa entrare il menu */
+    }
 }
 
 /* --- FOOTER --- */
