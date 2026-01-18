@@ -1,4 +1,4 @@
-/* <=================== RSVP.CSS - SOLO PAGINA FORM ===================> */
+/* <=================== RSVP.CSS - FORM ===================> */
 
 .rsvp-page-body {
     background-color: var(--bg-sage);
@@ -20,17 +20,10 @@
     border-radius: 10px;
 }
 
-/* TITOLO RSVP */
 .rsvp-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-@media (max-width: 450px) {
-    .rsvp-title {
-        font-size: 1.5rem !important;
-    }
 }
 
 /* BARRA DI PROGRESSO */
@@ -50,34 +43,12 @@
     transition: width 0.5s ease;
 }
 
-/* STEPS & ISTRUZIONI */
-.form-step {
-    display: none; 
-    animation: fadeIn 0.5s;
-}
-
-.form-step.active {
-    display: block; 
-}
-
-.title-instruction {
-    font-size: 1.15rem;
-    text-align: center;
-    color: var(--wine-dark);
-}
-
-
-.step-instruction {
-    font-size: 0.95rem;
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--wine-dark);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* STEPS */
+.form-step { display: none; animation: fadeIn 0.5s; }
+.form-step.active { display: block; }
+.title-instruction { font-size: 1.15rem; text-align: center; color: var(--wine-dark); }
+.step-instruction { font-size: 0.95rem; text-align: center; margin-bottom: 40px; color: var(--wine-dark); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* SEARCH BOX */
 .search-box {
@@ -105,17 +76,6 @@
     text-align: center;
 }
 
-.search-box input:focus {
-    box-shadow: 0 0 15px rgba(92, 26, 32, 0.2);
-    transform: scale(1.02);
-}
-
-.search-box input::placeholder {
-    color: #999;
-    font-style: italic;
-    opacity: 0.8;
-}
-
 .error-msg {
     color: #d9534f;
     font-size: 0.9rem;
@@ -136,54 +96,17 @@
     flex-wrap: wrap;
 }
 
-.guest-name {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: var(--wine-dark);
-}
+.guest-name { font-weight: bold; font-size: 1.1rem; color: var(--wine-dark); }
+.attendance-options label { margin-left: 15px; font-family: 'Montserrat', sans-serif; cursor: pointer; }
 
-.attendance-options label {
-    margin-left: 15px;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
-}
-
-/* DIETA & CHECKBOX */
-.diet-row {
-    margin-bottom: 15px;
-}
-
-.diet-checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.diet-checkbox-label {
-    display: flex;
-    align-items: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    cursor: pointer;
-}
-
-.diet-checkbox-label input {
-    margin-right: 10px;
-    width: 18px; 
-    height: 18px;
-    accent-color: var(--wine-color);
-}
-
+/* DIETA */
+.diet-row { margin-bottom: 15px; }
+.diet-checkbox-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.diet-checkbox-label { display: flex; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; cursor: pointer; }
+.diet-checkbox-label input { margin-right: 10px; width: 18px; height: 18px; accent-color: var(--wine-color); }
 .intolerance-input {
-    display: none;
-    margin-top: 5px;
-    margin-left: 28px;
-    padding: 8px;
-    width: calc(100% - 30px);
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
+    display: none; margin-top: 5px; margin-left: 28px; padding: 8px;
+    width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; font-family: 'Montserrat', sans-serif;
 }
 
 /* BOTTONI NAVIGAZIONE */
@@ -191,30 +114,31 @@
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
-}
-
-.nav-buttons .huge-btn {
-    margin: 0; 
+    gap: 10px;
 }
 
 .secondary-btn {
-    background: transparent;
-    border: 1px solid #666;
-    color: #666;
-    padding: 10px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-}
-.secondary-btn:hover {
-    background: #eee;
+    background: transparent; border: 1px solid #666; color: #666;
+    padding: 10px 30px; border-radius: 50px; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; text-transform: uppercase;
 }
 
+/* <=================== MEDIA QUERY MOBILE FORM ===================> */
 @media (max-width: 600px) {
-    .search-box { flex-direction: column; }
+    .rsvp-container { padding: 15px; margin-top: 20px; }
+    
+    .rsvp-title { font-size: 1.5rem !important; }
+
+    /* Barra ricerca a capo */
+    .search-box { flex-direction: column; width: 100%; }
+    .search-box input { width: 100%; min-width: 0; }
+    .search-box button { width: 100% !important; margin: 0 !important; }
+
+    /* Lista ospiti a capo */
     .guest-row { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .attendance-options { width: 100%; display: flex; justify-content: space-between; }
-    .nav-buttons { flex-direction: column-reverse; gap: 15px; }
-    .nav-buttons button { width: 100%; margin: 0; }
+    .attendance-options { width: 100%; display: flex; justify-content: space-between; margin-top: 5px; }
+
+    /* Bottoni uno sopra l'altro */
+    .nav-buttons { flex-direction: column-reverse; }
+    .nav-buttons button { width: 100% !important; }
 }

@@ -1,12 +1,13 @@
 /* <=================== STYLE.CSS - GLOBALE ===================> */
 
-/* --- VARIABILI & COLORI --- */
+/* --- VARIABILI & COLORI (RESPONSIVE) --- */
 :root{
+    /* Misure per PC */
     --h1-size: 4rem;
     --h2-size: 2.2rem;
     --h3-size: 1.8rem;
     --text-size: 1.1rem;
-    --horizontal-margin-spacing: 6rem;
+    --horizontal-margin-spacing: 6rem; /* Margine largo su PC */
     
     /* Colori tema */
     --bg-sage: rgb(244, 233, 211); 
@@ -16,7 +17,19 @@
     --wine-dark: #4a1218;   
     --text-color: #212121;
     --white: #ffffff;
-    --nav-height: 60px; 
+    --nav-height: 80px; 
+}
+
+/* MEDIA QUERY: CAMBIA LE VARIABILI SU MOBILE */
+@media (max-width: 768px) {
+    :root {
+        --h1-size: 2.8rem;  /* Titoli più piccoli */
+        --h2-size: 1.8rem;
+        --h3-size: 1.4rem;
+        --text-size: 1rem;
+        --horizontal-margin-spacing: 1.5rem; /* Margine stretto su mobile */
+        --nav-height: 60px;
+    }
 }
 
 /* --- RESET & BASI --- */
@@ -29,7 +42,7 @@
 html{
     scroll-behavior: smooth;
     background-color: var(--bg-sage); 
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita lo scroll orizzontale indesiderato */
 }
 
 body {
@@ -46,7 +59,7 @@ body {
 h1{
     font-size: var(--h1-size);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.1;
     color: var(--wine-color);
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -90,7 +103,7 @@ h3{
     opacity: 1;
 }
 
-/* --- ELEMENTI COMUNI (Bottoni, Navbar, Footer) --- */
+/* --- ELEMENTI COMUNI --- */
 .huge-btn{
     display: block;
     font-size: 1rem;
@@ -116,10 +129,10 @@ h3{
     box-shadow: 0 5px 15px rgba(92, 26, 32, 0.2);
 }
 
-/* NAVBAR */
+/* --- NAVBAR --- */
 nav{
     height: var(--nav-height);
-    width: 100%;;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
@@ -134,7 +147,7 @@ nav{
 
 label.logo{
     font-family: 'Cinzel', serif;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: bold;
     color: var(--white);
     cursor: pointer;
@@ -149,7 +162,7 @@ nav ul li{
 }
 nav ul li a{
     font-family: 'Cinzel', serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     padding: 7px 13px;
     border-radius: 3px;
@@ -158,29 +171,34 @@ nav ul li a{
     color: var(--white);
 }
 a:hover{
-    color: var(--text-color);
+    color: #ddd;
     transition: .5s;
 }
+
+/* Icona Hamburger */
 .checkbtn{
     font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
     cursor: pointer;
-    display: none;
-    color: var(--text-color);
+    display: none; /* Nascosto su PC */
 }
 #check{
     display: none;
 }
 
-/* FOOTER */
+/* --- FOOTER --- */
 footer {
     background-color: var(--wine-color-light);
     color: white;
     padding: 40px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 
 .footer-col {
@@ -201,35 +219,55 @@ footer {
     transition: 0.3s;
 }
 
-.footer a:hover {
-    color: #ddd;
-    border-bottom-color: #ddd;
-    opacity: 0.8;
+/* --- REGOLE MOBILE SPECIFICHE --- */
+@media (max-width: 950px){
+    label.logo{ font-size: 24px; }
+    nav ul li a{ font-size: 12px; }
 }
 
-/* RESPONSIVE BASE */
-@media (max-width:1000px){
-    label.logo{ font-size: 20px; }
-    nav ul li a{ font-size: 10px; }
-}
-
-@media (max-width:768px){
-    footer { flex-direction: column; text-align: center; }
-    .footer-col.left, .footer-col.right { text-align: center; }
+@media (max-width: 768px){
+    /* Navbar Mobile a Tendina */
+    .checkbtn {
+        display: block; /* Mostra icona hamburger */
+        line-height: var(--nav-height); /* Centra verticalmente */
+        margin-right: 0;
+    }
     
-    .checkbtn{ display: block; }
-    ul{
+    ul {
         position: fixed;
         width: 100%;
         height: 100vh;
-        background-color: var(--bg-sage);
-        top: 80px; 
-        left: -100%;
+        background-color: var(--wine-color-light); /* Sfondo menu */
+        top: var(--nav-height);
+        left: -100%; /* Nascosto a sinistra */
         text-align: center;
         transition: all .5s;
-        z-index: 99;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
-    nav ul li{ display: block; margin: 50px 0; line-height: 30px; }
-    nav li ul a{ font-size: 20px; }
-    #check:checked ~ ul{ left: 0; }
+    
+    nav ul li {
+        display: block;
+        margin: 20px 0;
+    }
+    
+    nav ul li a {
+        font-size: 20px; /* Testo menu più grande su mobile */
+        display: block;
+    }
+    
+    #check:checked ~ ul {
+        left: 0; /* Mostra menu quando cliccato */
+    }
+
+    /* Footer Mobile: Tutto in colonna */
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-col.left, .footer-col.right {
+        text-align: center;
+    }
 }
