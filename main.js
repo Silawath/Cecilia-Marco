@@ -1,136 +1,72 @@
-const parallax = document.getElementById("home-img-lg");
-const parallax1 = document.getElementById("parallax1");
-const parallax2 = document.getElementById("parallax2");
+/* <=================== SISTEMA DI PROTEZIONE PASSWORD ===================> */
 
-window.addEventListener("scroll", function()
-{
-    let offset = window.pageYOffset;
-    parallax.style.backgroundPositionX = offset*(-0.3)-100 + "px";
-})
+// PASSWORD SEGRETA (Modificala qui!)
+const PASSWORD_CORRETTA = "272300"; 
 
+// 1. CONTROLLO ACCESSO IMMEDIATO
+(function checkAccess() {
+    const hasAccess = sessionStorage.getItem('access_granted');
+    const path = window.location.pathname;
+    // Verifica se siamo nella pagina intro (supporta anche /intro.html)
+    const isIntroPage = path.indexOf('intro.html') !== -1; 
 
-window.addEventListener("scroll", function()
-{
-    let offset = window.pageYOffset;
-    offset-=3100;
-    parallax1.style.backgroundPositionY = offset*(0.1) + "px";
-})
-
-window.addEventListener("scroll", function()
-{
-    let offset = window.pageYOffset;
-    offset-=4800;
-    parallax2.style.backgroundPositionY = offset*(-0.1) + "px";
-})
-
-function myFunction() {
-    document.getElementById("check").checked = false;
-  }
-
-
-  
-function reveal() {
-var reveals = document.querySelectorAll(".reveal");
-  
-for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
-  
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
-      } else {
-        reveals[i].classList.remove("active");
-      }
+    // Se NON ho il pass e NON sono nella intro -> CALCIO FUORI -> Intro
+    if (!hasAccess && !isIntroPage) {
+        window.location.href = 'intro.html';
+    } 
+    // Se HO il pass e sono nella intro -> VAI DENTRO -> Index
+    else if (hasAccess && isIntroPage) {
+        window.location.href = 'index.html';
     }
-}
-  
-window.addEventListener("scroll", reveal);
+})();
 
-$(document).ready(function() {
-  let clock;
 
-  // Grab the current date
-  let currentDate = new Date();
-
-  // Target future date/24 hour time/Timezone
-  let targetDate = moment.tz("2026-06-27 15:00", "europe/Rome");
-
-  // Calculate the difference in seconds between the future and current date
-  let diff = targetDate / 1000 - currentDate.getTime() / 1000;
-
-  if (diff <= 0) {
-    // If remaining countdown is 0
-    clock = $(".clock").FlipClock(0, {
-      clockFace: "DailyCounter",
-      countdown: true,
-      autostart: false
-    });
-    console.log("Date has already passed!")
-    
-  } else {
-    // Run countdown timer
-    clock = $(".clock").FlipClock(diff, {
-      clockFace: "DailyCounter",
-      countdown: true,
-      callbacks: {
-        stop: function() {
-          console.log("Timer has ended!")
-        }
-      }
-    });
-    
-    // Check when timer reaches 0, then stop at 0
-    setTimeout(function() {
-      checktime();
-    }, 1000);
-    
-    function checktime() {
-      t = clock.getTime();
-      if (t <= 0) {
-        clock.setTime(0);
-      }
-      setTimeout(function() {
-        checktime();
-      }, 1000);
-    }
-  }
-});
-
-/* <=== GESTIONE INTRO & MENU (Versione Intelligente) ===> */
+/* <=================== LOGICA PAGINA ===================> */
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- A. GESTIONE PASSWORD (Solo su intro.html) ---
+    const enterBtn = document.getElementById('enter-site-btn');
+    const inputCode = document.getElementById('access-code');
+    const errorMsg = document.getElementById('error-msg');
     
-    // --- 1. GESTIONE INTRO CON MEMORIA ---
-    const introOverlay = document.getElementById('intro-overlay');
-    const introBtn = document.querySelector('.intro-btn');
+    // Funzione che controlla la password
+    function checkPassword() {
+        const userCode = inputCode.value.trim(); // Toglie spazi vuoti
 
-    if (introOverlay) {
-        // CONTROLLO: L'utente ha già visto l'intro in questa sessione?
-        if (sessionStorage.getItem('intro_visto') === 'true') {
-            // SÌ: Nascondi immediatamente l'overlay senza animazione
-            introOverlay.style.display = 'none';
+        if (userCode === PASSWORD_CORRETTA) {
+            // 1. Password Giusta!
+            sessionStorage.setItem('access_granted', 'true'); // Diamo il pass
+            document.getElementById('intro-overlay').classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500); 
         } else {
-            // NO: L'overlay è visibile (via CSS). Attiva il bottone.
-            if (introBtn) {
-                introBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    
-                    // Avvia animazione uscita
-                    introOverlay.classList.add('fade-out');
-                    
-                    // Rimuovi dopo 1.5 secondi
-                    setTimeout(() => { 
-                        introOverlay.style.display = 'none'; 
-                    }, 1500);
-
-                    // IMPORTANTE: Salva in memoria che l'abbiamo visto
-                    sessionStorage.setItem('intro_visto', 'true');
-                });
-            }
+            // 2. Password Sbagliata
+            errorMsg.style.display = 'block';
+            inputCode.classList.add('shake-animation'); // Effetto errore
+            
+            // Rimuovi animazione dopo 0.5s per poterla rifare
+            setTimeout(() => {
+                inputCode.classList.remove('shake-animation');
+            }, 500);
         }
     }
 
-    // --- 2. GESTIONE MENU MOBILE (Il codice che avevamo fatto prima) ---
+    if (enterBtn && inputCode) {
+        // Controllo al click del bottone
+        enterBtn.addEventListener('click', checkPassword);
+
+        // Controllo se premi INVIO sulla tastiera
+        inputCode.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    }
+
+
+    // --- B. GESTIONE MENU MOBILE ---
     const menuCheckbox = document.getElementById('check');
     const menuLinks = document.querySelectorAll('nav ul li a');
 
@@ -150,4 +86,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- C. PARALLASSE & REVEAL ---
+    const parallax = document.getElementById("home-img-lg");
+    if (parallax) {
+        window.addEventListener("scroll", function() {
+            let offset = window.pageYOffset;
+            parallax.style.backgroundPositionX = offset*(-0.3)-100 + "px";
+        });
+    }
+
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); 
 });

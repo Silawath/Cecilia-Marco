@@ -1,13 +1,15 @@
 /* <=================== HOME.CSS - SOLO HOME PAGE ===================> */
 
 /* INTRO ACQUERELLO */
+
 #intro-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    /* Se vuoi lo sfondo generale più grigio, cambia #fff in #eee o #ccc qui sotto */
+    background-color: #eeeeee; 
     z-index: 10000;
     display: flex;
     justify-content: center;
@@ -25,11 +27,43 @@
     background-image: url('img/castello2.png'); 
     background-size: cover;
     background-position: center;
+    
+    /* MODIFICHE PER LEGGIBILITÀ */
+    opacity: 0.45; /* Rende l'immagine più trasparente (50%) */
+    filter: grayscale(20%); /* Toglie un po' di colore per renderla più neutra */
+    
     animation: gentleZoom 20s infinite alternate;
 }
 
-.intro-content { position: relative; z-index: 10; text-align: center; padding: 20px; }
+.intro-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    
+    /* IL RIQUADRO BIANCO SALVA-VISTA */
+    background-color: rgba(255, 255, 255, 0.05); /* Bianco all'85% di opacità */
+    padding: 40px 60px; /* Spazio interno abbondante */
+    border-radius: 15px; /* Angoli arrotondati */
+    /*box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* Ombra elegante per staccarlo dallo sfondo */
+    /*border: 1px solid rgba(255,255,255,0.9); /* Bordino sottile */
+    /*backdrop-filter: blur(5px); /* Effetto sfocato dietro il box (molto moderno) */
+    
+    /* Assicuriamoci che non sia più largo dello schermo su mobile */
+    max-width: 90%; 
+    margin: 0 auto;
+}
 
+/* Riduciamo un po' il padding su mobile */
+@media (max-width: 768px) {
+    .intro-content {
+        padding: 30px 20px;
+        width: 85%;
+    }
+    
+    .intro-names {
+        font-size: 3.5rem !important; /* Nome un po' più piccolo su mobile per stare nel box */
+    }
+}
 .intro-names {
     font-family: 'Great Vibes', cursive !important;
     font-size: 6rem;
@@ -294,4 +328,47 @@
     /* MOSAICO 2 COLONNE */
     .mosaic-grid { column-count: 2; column-gap: 10px; }
     .mosaic-item { margin-bottom: 10px; }
+}
+
+/* <=== STILE INPUT PASSWORD (INTRO) ===> */
+.access-box {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#access-code {
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid var(--wine-color); /* Linea color vino sotto */
+    background: rgba(255, 255, 255, 0.6); /* Sfondo semitrasparente */
+    color: var(--wine-dark);
+    outline: none;
+    border-radius: 5px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+#access-code:focus {
+    background: rgba(255, 255, 255, 0.9);
+    width: 220px; /* Effetto allargamento quando scrivi */
+}
+
+/* Animazione "scossa" per errore */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-animation {
+    animation: shake 0.4s ease-in-out;
+    border-bottom: 2px solid red !important;
 }
