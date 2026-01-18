@@ -31,6 +31,7 @@ html {
     scroll-behavior: smooth;
     background-color: var(--bg-sage); 
     overflow-x: hidden;
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -280,7 +281,7 @@ footer {
 
     /* Animazione Apertura Menu */
     #check:checked ~ ul {
-        right: 0;
+        left: 0;
     }
 }
 

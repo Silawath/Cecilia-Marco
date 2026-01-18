@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informazioni Utili - Cecilia & Marco</title>
+    
+    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="regaloeinfo.css?v=3">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="ln-page-body">
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">
+            <a href="index.html" style="color: white; text-decoration:none;">C&M</a>
+        </label>
+        <ul class="text">
+            <li><a href="index.html#location">Location</a></li>
+            <li><a href="rsvp.html">R.S.V.P.</a></li>
+            <li><a href="listanozze.html">Viaggio</a></li>
+            <li><a href="informazioni.html">Informazioni</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+    
+    <div class="ln-container-page">
+
+        <div class="bergamo-guide reveal">
+            <h2 style="font-family: 'Cinzel', serif; color: var(--wine-color); text-align: center; margin-bottom: 20px; margin-top: 0;">
+                Alla scoperta di Bergamo
+            </h2>
+            <p class="text" style="text-align: center; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Per chi viene da fuori, ecco i luoghi imperdibili della nostra città. Bergamo è divisa in due: 
+                <strong>Città Alta</strong> (il borgo storico sulle mura) e <strong>Città Bassa</strong> (la parte moderna).
+            </p>
+
+            <div class="experiences-grid">
+                
+                <div class="experience-card">
+                    <div class="exp-img">
+                        <img src="https://placehold.co/600x400?text=Citta+Alta" alt="Città Alta">
+                    </div>
+                    <div class="exp-content">
+                        <h3>Città Alta & Piazza Vecchia</h3>
+                        <p>Il cuore medievale di Bergamo. Raggiungibile con la funicolare, offre vicoli storici e la splendida Piazza Vecchia.</p>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-img">
+                        <img src="https://placehold.co/600x400?text=Mura+Venete" alt="Mura Venete">
+                    </div>
+                    <div class="exp-content">
+                        <h3>Le Mura Venete</h3>
+                        <p>Patrimonio UNESCO, abbracciano Città Alta. Perfette per una passeggiata romantica al tramonto con vista sulla pianura.</p>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-img">
+                        <img src="https://placehold.co/600x400?text=Accademia+Carrara" alt="Accademia Carrara">
+                    </div>
+                    <div class="exp-content">
+                        <h3>Accademia Carrara</h3>
+                        <p>Per gli amanti dell'arte, una delle pinacoteche più importanti d'Italia con opere di Botticelli, Raffaello e Tiziano.</p>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-img">
+                        <img src="https://placehold.co/600x400?text=San+Vigilio" alt="Castello di San Vigilio">
+                    </div>
+                    <div class="exp-content">
+                        <h3>Castello di San Vigilio</h3>
+                        <p>Il punto più alto della città. Si prende una seconda funicolare per godere di una vista mozzafiato a 360 gradi.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid rgba(92,26,32,0.1); margin: 60px auto; max-width: 200px;">
+        </div>
+        <h1 style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 2.5rem; color: #5c1a20; margin-bottom: 40px; text-align: center;">F.A.Q.</h1>
+        
+        <div class="faq-section reveal">
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Qual è il dress code?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>È gradito un abito elegante. Chiediamo gentilmente di evitare il colore bianco (riservato alla sposa!).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Ci sono hotel convenzionati?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Come funziona per il parcheggio?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sia la chiesa che la location dispongono di un ampio parcheggio gratuito riservato agli ospiti.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Ho delle allergie alimentari, a chi lo dico?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Puoi segnalare qualsiasi esigenza alimentare direttamente nella sezione <a href="rsvp.html" style="color:var(--wine-color); font-weight:bold;">RSVP</a> del sito quando confermi la tua presenza.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="people-section reveal">
+            <h2 style="font-family: 'Cinzel', serif; color: var(--wine-color); text-align: center; margin-bottom: 40px; margin-top: 80px;">
+                I nostri aiutanti speciali
+            </h2>
+            <p class="text" style="text-align: center; margin-bottom: 40px;">Per qualsiasi dubbio organizzativo il giorno delle nozze, potete rivolgervi a loro:</p>
+
+            <div class="people-grid">
+                
+                <div class="person-card">
+                    <div class="person-img">
+                        <img src="img/testimone1.jpg" alt="Laura" onerror="this.src='https://placehold.co/400x400?text=Laura'">
+                    </div>
+                    <div class="person-content">
+                        <h3>Laura Parmeggiani</h3>
+                        <span class="role-badge">Testimone Sposo</span>
+                        <p>La sorella 1 della sposo. Chiedete a lei per qualsiasi sorpresa o gioco durante la cena!</p>
+                        <a href="tel:+39333000000" class="contact-link"><i class="fas fa-phone"></i> Chiama</a>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-img">
+                        <img src="img/testimone2.jpg" alt="Silvia" onerror="this.src='https://placehold.co/400x400?text=Silvia'">
+                    </div>
+                    <div class="person-content">
+                        <h3>Silvia Parmeggiani</h3>
+                        <span class="role-badge">Testimone Sposo</span>
+                        <p>La sorella 2 dello sposo. Si occupa della logistica e degli spostamenti.</p>
+                        <a href="tel:+39333000000" class="contact-link"><i class="fas fa-phone"></i> Chiama</a>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+
+    <footer id="contatti">
+        <div class="footer-col left">
+            <h3>Cecilia Terranova</h3>
+            <p>+39 329 9865945</p>
+        </div>
+        <div class="footer-col center">
+            <h2 style="font-size: 1.5rem; margin-bottom: 10px; color: white;">Cecilia & Marco</h2>
+            <div class="text" style="color: #eee; margin-bottom: 15px;">27 Giugno 2026</div>
+            <p style="font-size: 0.9rem;">Per info scrivici a:</p>
+            <p style="margin-top: 5px;">
+                <a href="mailto:marcoececilia2023@gmail.com" style="font-size: 1.1rem; color: #eee;">
+                    marcoececilia2023@gmail.com
+                </a>
+            </p>
+        </div>
+        <div class="footer-col right">
+            <h3>Marco Parmeggiani</h3> 
+            <p>+39 320 4143614</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    
+    <script>
+        function toggleFaq(element) {
+            // Chiude le altre se vuoi che se ne apra una alla volta (opzionale)
+            /*
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if(item.querySelector('.faq-question') !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            */
+            
+            // Apre/Chiude quella cliccata
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+.ln-page-body {
+    background-color: var(--bg-sage);
+    padding-top: 100px;
+}
+
+.ln-container-page {
+    max-width: 1500px;
+    margin: 0 auto 50px auto;
+    background: var(--bg-sage);
+    padding: 50px;
+}
+
+.ln-container {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    background: var(--bg-sage);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* <=== STILE LISTA NOZZE - ESPERIENZE ===> */
+
+.honeymoon-section {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+
+.experiences-grid {
+    display: grid;
+    /* Crea colonne automatiche, minimo 280px di larghezza */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.experience-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(92, 26, 32, 0.1); /* Ombra color vino leggerissima */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(92, 26, 32, 0.1);
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(92, 26, 32, 0.2);
+}
+
+.exp-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.exp-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.experience-card:hover .exp-img img {
+    transform: scale(1.1); /* Zoom immagine all'hover */
+}
+
+.exp-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.exp-content h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--wine-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.exp-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* <=== MEDIA QUERY MOBILE (AGGIUNGI QUESTA PARTE!) ===> */
+@media (max-width: 768px) {
+    /* Riduciamo il padding enorme che schiacciava il testo */
+    .ln-container-page {
+        padding: 20px 15px; 
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    /* Una sola colonna per le card esperienze */
+    .experiences-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ln-container-page h1 {
+        font-size: 1.8rem !important; 
+        margin-top: 0;
+    }
+    
+    .text-content {
+        padding: 0 !important;
+        text-align: justify; 
+    }
+}
+
+/* <=================== SEZIONE FAQ (DOMANDE) ===================> */
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+}
+
+.faq-item {
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid rgba(92, 26, 32, 0.1);
+}
+
+.faq-question {
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+.faq-question span {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    color: var(--wine-color);
+    font-size: 1.1rem;
+}
+
+.faq-question i {
+    color: var(--wine-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s;
+    background-color: #fafafa;
+}
+
+.faq-answer p {
+    padding: 0 25px 25px 25px;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Stato Attivo (Aperto) */
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Abbastanza alto per il contenuto */
+    padding-top: 10px;
+}
+
+.faq-item.active .faq-question {
+    background-color: var(--bg-sage-light);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+
+/* <=================== SEZIONE PERSONE DI RIFERIMENTO ===================> */
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.person-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(92, 26, 32, 0.1);
+    text-align: center;
+    padding-bottom: 25px;
+    border: 1px solid rgba(92, 26, 32, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.person-card:hover {
+    transform: translateY(-5px);
+}
+
+.person-img {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.person-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Se vuoi le foto tonde invece che rettangolari, decommenta qui sotto: */
+    /* border-radius: 50%; width: 150px; height: 150px; margin-top: 20px; */
+}
+
+.person-content {
+    padding: 20px;
+}
+
+.person-content h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--wine-dark);
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.role-badge {
+    display: inline-block;
+    background-color: var(--bg-sage-light);
+    color: var(--wine-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+}
+
+.person-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: var(--wine-color);
+    font-weight: bold;
+    border: 1px solid var(--wine-color);
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+.contact-link:hover {
+    background-color: var(--wine-color);
+    color: white;
+}
