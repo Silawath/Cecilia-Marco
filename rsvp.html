@@ -323,6 +323,13 @@
             updateProgress(100);
             showStep('step4');
         }
+
+        // CHIUSURA AUTOMATICA MENU MOBILE
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('check').checked = false;
+            });
+        });
     </script>
 </body>
 </html>

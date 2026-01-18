@@ -250,9 +250,9 @@ footer {
         height: 100vh; /* Tutto schermo */
         background-color: var(--wine-color-light);
         top: 80px; /* Spazio navbar */
-        left: -100%; /* Nascosto a sinistra */
+        right: -100%; /* Nascosto a destra */
         text-align: center;
-        transition: all 0.5s;
+        transition: all 0.3s;
         z-index: 999;
         
         /* Flexbox Verticale */
@@ -273,7 +273,7 @@ footer {
 
     /* Animazione Apertura Menu */
     #check:checked ~ ul {
-        left: 0;
+        right: 0;
     }
 }
 

@@ -250,6 +250,13 @@
         function goRegalo() {
             window.location.href = "listanozze.html";
         }
+
+       
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('check').checked = false;
+            });
+        });
     </script>
 </body>
 </html>
