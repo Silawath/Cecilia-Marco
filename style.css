@@ -244,23 +244,28 @@ footer {
         order: 2; /* Mette l'icona a destra */
     }
 
+    /* MENU A TENDINA MOBILE */
     nav ul {
         position: fixed;
         width: 100%;
-        height: 100vh; /* Tutto schermo */
+        height: 100vh;
         background-color: var(--wine-color-light);
-        top: 80px; /* Spazio navbar */
-        right: -100%; /* Nascosto a destra */
+        
+        
+        top: var(--nav-height); 
+        
+       
+        left: -100%;
         text-align: center;
-        transition: all 0.3s;
+        transition: left 0.4s ease; /* Transizione più fluida */
         z-index: 999;
         
-        /* Flexbox Verticale */
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding-bottom: 100px; /* Spazio extra in fondo per sicurezza */
     }
-
+    
     nav ul li {
         display: block;
         margin: 30px 0;

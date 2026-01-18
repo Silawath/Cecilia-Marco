@@ -36,7 +36,7 @@
         </label>
         
         <label class="logo">
-            <a href="index.html" style="color: white; text-decoration:none;">C&M</a>
+            <a href="index.html#inizio" style="color: white; text-decoration:none;">C&M</a>
         </label>
 
         <ul class="text">
@@ -49,7 +49,7 @@
 
     <section class="hero-section">
         
-        <h1 class="reveal" style="color:#eee">Ci sposiamo!</h1>
+        <h1 class="reveal" style="color:#eee" id="inizio">Ci sposiamo!</h1>
   
         
         <div class="hero-details reveal">
@@ -188,7 +188,7 @@
             <p>Tel: +39 320 4143614</p>
         </div>
     </footer>
-
+    <script src="main.js"></script>
     <script>
         // 1. INTRO
         document.addEventListener('DOMContentLoaded', () => {
@@ -252,11 +252,7 @@
         }
 
        
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('check').checked = false;
-            });
-        });
+
     </script>
 </body>
 </html>

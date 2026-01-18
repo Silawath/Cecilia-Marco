@@ -97,34 +97,57 @@ $(document).ready(function() {
   }
 });
 
+/* <=== GESTIONE INTRO & MENU (Versione Intelligente) ===> */
 document.addEventListener('DOMContentLoaded', () => {
-    // Gestione Intro Acquerello
+    
+    // --- 1. GESTIONE INTRO CON MEMORIA ---
     const introOverlay = document.getElementById('intro-overlay');
-    // Seleziona sia il pulsante che l'intero overlay per cliccare ovunque
     const introBtn = document.querySelector('.intro-btn');
 
-    // Funzione per entrare nel sito
-    function enterSite() {
-        if (introOverlay) {
-            introOverlay.classList.add('fade-out');
-            
-            // Rimuovi fisicamente dopo la transizione (1.5s)
-            setTimeout(() => {
-                introOverlay.style.display = 'none';
-            }, 1500);
+    if (introOverlay) {
+        // CONTROLLO: L'utente ha già visto l'intro in questa sessione?
+        if (sessionStorage.getItem('intro_visto') === 'true') {
+            // SÌ: Nascondi immediatamente l'overlay senza animazione
+            introOverlay.style.display = 'none';
+        } else {
+            // NO: L'overlay è visibile (via CSS). Attiva il bottone.
+            if (introBtn) {
+                introBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    // Avvia animazione uscita
+                    introOverlay.classList.add('fade-out');
+                    
+                    // Rimuovi dopo 1.5 secondi
+                    setTimeout(() => { 
+                        introOverlay.style.display = 'none'; 
+                    }, 1500);
+
+                    // IMPORTANTE: Salva in memoria che l'abbiamo visto
+                    sessionStorage.setItem('intro_visto', 'true');
+                });
+            }
         }
     }
 
-    // Attiva cliccando sul pulsante "Entra"
-    if (introBtn) {
-        introBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita doppio scatto
-            enterSite();
-        });
-    }
+    // --- 2. GESTIONE MENU MOBILE (Il codice che avevamo fatto prima) ---
+    const menuCheckbox = document.getElementById('check');
+    const menuLinks = document.querySelectorAll('nav ul li a');
 
-    // Opzionale: Attiva cliccando ovunque sullo schermo
-    if (introOverlay) {
-        introOverlay.addEventListener('click', enterSite);
+    if (menuCheckbox && menuLinks.length > 0) {
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuCheckbox.checked = false; 
+                document.body.style.overflow = 'auto'; 
+            });
+        });
+        
+        menuCheckbox.addEventListener('change', () => {
+            if(menuCheckbox.checked) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
     }
 });
