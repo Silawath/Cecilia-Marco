@@ -1,0 +1,87 @@
+.ln-page-body {
+    background-color: var(--bg-sage);
+    padding-top: 100px;
+}
+
+.ln-container-page {
+    max-width: 1500px;
+    margin: 0 auto 50px auto;
+    background: var(--bg-sage);
+    padding: 50px;
+}
+
+.ln-container {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    background: var(--bg-sage);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+
+/* <=== STILE LISTA NOZZE - ESPERIENZE ===> */
+
+.honeymoon-section {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+
+.experiences-grid {
+    display: grid;
+    /* Crea colonne automatiche, minimo 280px di larghezza */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.experience-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(92, 26, 32, 0.1); /* Ombra color vino leggerissima */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(92, 26, 32, 0.1);
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(92, 26, 32, 0.2);
+}
+
+.exp-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.exp-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.experience-card:hover .exp-img img {
+    transform: scale(1.1); /* Zoom immagine all'hover */
+}
+
+.exp-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.exp-content h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--wine-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.exp-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}

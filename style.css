@@ -17,6 +17,7 @@
     --text-color: #212121;
     --white: #ffffff;
     --nav-height: 80px; 
+    --foot-height: 220px;
 }
 
 * {
@@ -176,6 +177,7 @@ nav ul li a:hover {
 
 /* 5. FOOTER (Versione PC) */
 footer {
+    height: var(--foot-height);
     background-color: var(--wine-color-light);
     color: white;
     padding: 60px 20px;

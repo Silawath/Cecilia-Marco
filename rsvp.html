@@ -23,10 +23,10 @@
         </label>
 
         <ul class="text">
-            <li><a href="index.html#location">Location</a></li>
-            <li><a href="index.html#rsvp">R.S.V.P.</a></li>
-            <li><a href="index.html#gift">Regalo</a></li>
-            <li><a href="index.html#contatti">Contatti</a></li>
+        <li><a href="index.html#location">Location</a></li>
+            <li><a href="rsvp.html">R.S.V.P.</a></li>
+            <li><a href="listanozze.html">Il nostro sogno</a></li>
+            <li><a href="rsvp.html#contatti">Contatti</a></li>
         </ul>
     </nav>
     <div class="rsvp-container-page">
@@ -103,28 +103,32 @@
     </footer>
 <script src="main.js"></script>
     <script>
-        // --- DATABASE INVITATI (SIMULATO) ---
-        const guestDatabase = [
-            {
-                id: 1,
-                familyName: "Famiglia Rossi",
-                members: ["Mario Rossi", "Giulia Bianchi", "Luca Rossi"]
-            },
-            {
-                id: 2,
-                familyName: "Famiglia Verdi",
-                members: ["Giuseppe Verdi", "Anna Verdi"]
-            },
-            {
-                id: 3,
-                familyName: "Single Esempio",
-                members: ["Alessandro Manzoni"]
-            }
-        ];
+        // --- DATABASE INVITATI ---
+        
 
+        // --- VARIABILI GLOBALI ---
+        let guestDatabase = []; // Iniziamo vuoti
         let currentFamily = null;
         let confirmedGuests = [];
 
+        // --- CARICAMENTO DATABASE ESTERNO ---
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('invitati.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Impossibile trovare il file invitati.json");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    guestDatabase = data;
+                    console.log("Lista invitati caricata:", guestDatabase);
+                })
+                .catch(error => {
+                    console.error("Errore nel caricamento invitati:", error);
+                    alert("Attenzione: Impossibile caricare la lista invitati. Assicurati di eseguire il sito su un server.");
+                });
+        });
         // --- FUNZIONI NAVIGAZIONE ---
         function updateProgress(percent) {
             document.getElementById('progressBar').style.width = percent + '%';

@@ -2,20 +2,15 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cecilia & Marco - Viaggio di nozze</title>
-    
+    <title>Il nostro sogno - Cecilia & Marco</title>
     <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="listanozze.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="rsvp-page-body">
 
     <nav>
         <input type="checkbox" id="check">
@@ -30,157 +25,105 @@
 
         <ul class="text">
             <li><a href="index.html#location">Location</a></li>
-            <li><a href="index.html#rsvp">R.S.V.P.</a></li>
-            <li><a href="index.html#gift">Regalo</a></li>
-            <li><a href="index.html#contatti">Contatti</a></li>
+            <li><a href="rsvp.html">R.S.V.P.</a></li>
+            <li><a href="listanozze.html">Il nostro sogno</a></li>
+            <li><a href="listanozze.html#contatti">Contatti</a></li>
         </ul>
     </nav>
-
-    <section class="hero-section hz-margin">
-        <h3 class="reveal">Ci sposiamo!</h3>
-        <h1 class="reveal">Cecilia & Marco</h1>
+    
+    <div class="ln-container-page">
+        <h1 style="font-family: 'Cinzel', serif; font-weight: 600; font-size: 2.5rem; color: #5c1a20; margin-bottom: 20px; text-align: center;">Il nostro sogno</h1>
         
-        <div class="hero-photo-container reveal">
-            <img src="img/coppia.jpg" alt="Cecilia e Marco">
+        <div class="text-content" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 0 20px;">
+            <p>Fin da quando ci siamo conosciuti, abbiamo condiviso un sogno speciale: costruire una vita insieme, piena di amore, avventure e momenti indimenticabili.</p>
+            
+            <p>Il nostro desiderio più grande è creare ricordi che dureranno per tutta la vita, e non c'è modo migliore per farlo che circondati dalle persone che amiamo di più. La tua presenza al nostro matrimonio renderà questo giorno ancora più speciale e significativo.</p>
+            
+            <p>Invece di regali materiali, abbiamo deciso di chiedere ai nostri cari di contribuire al nostro viaggio di nozze. Vogliamo esplorare il mondo insieme, scoprire nuove culture e vivere esperienze uniche che arricchiranno la nostra vita di coppia.</p>
+            
+            <p>Se desideri contribuire, abbiamo creato una lista di esperienze che vorremmo fare durante il viaggio. Ogni contributo, grande o piccolo, sarà immensamente apprezzato e ci avvicinerà un passo in più verso la realizzazione dell'itinerario.</p>
+            
+            <p>Grazie di cuore per essere parte della nostra vita e per condividere con noi questo momento così speciale. Non vediamo l'ora di festeggiare insieme a te e di iniziare questa nuova avventura come marito e moglie!</p>
+            
+            <p>Con affetto,<br>Cecilia & Marco</p>
         </div>
 
-        <div class="hero-details reveal">
-            <p class="big-date">27 GIUGNO 2026</p>
-            <p class="location-text">Bergamo, Italia</p>
-        </div>
+        <div class="honeymoon-section reveal">
+        <h2 style="font-family: 'Cinzel', serif; color: var(--wine-color); text-align: center; margin-bottom: 40px; margin-top: 60px;">
+            Alcune tappe del nostro viaggio
+        </h2>
 
-        <div id="countdown" class="reveal">
-            <div class="time-box"><span id="days">00</span><small>Giorni</small></div>
-            <div class="time-box"><span id="hours">00</span><small>Ore</small></div>
-            <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
-        </div>
-    </section>
-
-    <section id="location" class="location-section hz-margin">
-        <h2 class="reveal">Il Grande Giorno</h2>
-        
-        <div class="timeline-vertical reveal">
-            <div class="timeline-event">
-                <div class="event-time">ORE 15:00</div>
-                <div class="event-content">
-                    <h3>La Cerimonia</h3>
-                    <p class="text">Santuario della madonna di Prada</p>
-                    <p class="text-small">Mapello, Bergamo </p>
-                    <div class="btn-group">
-                        <a href="https://maps.app.goo.gl/KcBCKPJjZriz31iz8" target="_blank" class="btn btn-map">Vedi Mappa</a>
-                        <a href="https://goo.gl/maps/tuo_link_parcheggio" target="_blank" class="btn btn-parking">P - Parcheggio</a>
-                    </div>
+        <div class="experiences-grid">
+            
+            <div class="experience-card">
+                <div class="exp-img">
+                    <img src="img/cena.jpg" alt="Cena Romantica" onerror="this.src='https://placehold.co/600x400?text=Cena+Romantica'">
+                </div>
+                <div class="exp-content">
+                    <h3>Cena a lume di candela</h3>
+                    <p>Una serata speciale in riva al mare per celebrare il nostro amore.</p>
                 </div>
             </div>
 
-            <div class="timeline-event">
-                <div class="event-time">ORE 17:30</div>
-                <div class="event-content">
-                    <h3>Il Ricevimento</h3>
-                    <p class="text">Castello di Clanezzo</p>
-                    <p class="text-small">Via Castello, Clanezzo (BG)</p>
-                    <div class="btn-group">
-                        <a href="https://maps.app.goo.gl/rKHRdHXK7z7AWSxV6" target="_blank" class="btn btn-map">Vedi Mappa</a>
-                        <a href="https://goo.gl/maps/tuo_link_parcheggio_villa" target="_blank" class="btn btn-parking">P - Parcheggio</a>
-                    </div>
+            <div class="experience-card">
+                <div class="exp-img">
+                    <img src="img/escursione.jpg" alt="Escursione" onerror="this.src='https://placehold.co/600x400?text=Escursione'">
+                </div>
+                <div class="exp-content">
+                    <h3>Escursione nella natura</h3>
+                    <p>Alla scoperta di paesaggi incontaminati e viste mozzafiato.</p>
                 </div>
             </div>
+
+            <div class="experience-card">
+                <div class="exp-img">
+                    <img src="img/spa.jpg" alt="Relax Spa" onerror="this.src='https://placehold.co/600x400?text=Relax+Spa'">
+                </div>
+                <div class="exp-content">
+                    <h3>Giornata Relax & Spa</h3>
+                    <p>Un momento di puro benessere per rilassarci dopo i festeggiamenti.</p>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="exp-img">
+                    <img src="img/volo.jpg" alt="Volo Panoramico" onerror="this.src='https://placehold.co/600x400?text=Volo+Panoramico'">
+                </div>
+                <div class="exp-content">
+                    <h3>Volo Panoramico</h3>
+                    <p>Per ammirare il mondo da una prospettiva completamente nuova.</p>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 
-    <section id="rsvp" class="rsvp-section hz-margin">
-        <h2 class="reveal">Conferma Presenza</h2>
-        <p class="text reveal" style="text-align: center; margin-bottom: 30px;">
-            Saremmo felici di averti con noi! Facci sapere se potrai esserci.
-        </p>
+    </div>
 
-        <form class="rsvp-form reveal">
-            <div class="form-group">
-                <label>Nome e Cognome</label>
-                <input type="text" placeholder="Mario Rossi" required>
-            </div>
-            <div class="form-group">
-                <label>Partecipazione</label>
-                <select>
-                    <option>Sì, ci sarò!</option>
-                    <option>Purtroppo non posso</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Intolleranze / Allergie</label>
-                <textarea rows="3" placeholder="Es. Vegetariano, Celiaco..."></textarea>
-            </div>
-            <button type="submit" class="huge-btn">Invia Conferma</button>
-        </form>
-    </section>
-
-    <section id="gift" class="gift-section hz-margin">
-        <h2 class="reveal">Regalo</h2> <p class="text reveal" style="text-align: center; margin-bottom: 20px;">
-            La vostra presenza è il nostro regalo più grande. <br>
-            Se desiderate contribuire al nostro viaggio di nozze:
-        </p>
-        
-        <div class="iban-card reveal">
-            <p class="iban-label">IBAN</p>
-            <p class="iban-number">IT00 X000 0000 0000 0000 0000 000</p>
-            <p class="iban-owner">Intestato a Cecilia & Marco</p>
+    <footer id="contatti">
+        <div class="footer-col left">
+            <h3>Cecilia Terranova</h3>
+            <p>Tel: +39 329 9865945</p>
         </div>
-    </section>
 
-    <footer>
-        <h2 style="font-size: 1.5rem;">Cecilia & Marco</h2>
-        <div class="text">27 Giugno 2026</div>
+        <div class="footer-col center">
+            <h2 style="font-size: 1.5rem; margin-bottom: 10px; color: white;">Cecilia & Marco</h2>
+            <div class="text" style="color: #eee; margin-bottom: 15px;">27 Giugno 2026</div>
+            
+            <p>Per qualsiasi informazione scrivici a:</p>
+            <p style="margin-top: 5px;">
+                <a href="mailto:marcoececilia2023@gmail.com" style="font-size: 1.2rem; color: #eee;">
+                    marcoececilia2023@gmail.com
+                </a>
+            </p>
+        </div>
+
+        <div class="footer-col right">
+            <h3>Marco Parmeggiani</h3> 
+            <p>Tel: +39 320 4143614</p>
+        </div>
     </footer>
-
-    <script>
-        // 1. INTRO
-        document.addEventListener('DOMContentLoaded', () => {
-            const introOverlay = document.getElementById('intro-overlay');
-            const introBtn = document.querySelector('.intro-btn');
-
-            function enterSite() {
-                if (introOverlay) {
-                    introOverlay.classList.add('fade-out');
-                    setTimeout(() => { introOverlay.style.display = 'none'; }, 1500);
-                }
-            }
-
-            if (introBtn) introBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                enterSite();
-            });
-        });
-
-        // 2. SCROLL REVEAL (Animazioni)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Avvia subito
-
-        // 3. COUNTDOWN
-        const weddingDate = new Date(2026, 5, 27, 11, 0, 0).getTime(); // Giugno = 5
-        setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-        }, 1000);
-
-
-    </script>
-    <script src="main.js"></script>
+<script src="main.js"></script>
+    
 </body>
 </html>

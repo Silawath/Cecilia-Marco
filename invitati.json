@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "familyName": "Famiglia Rossi",
+        "members": ["Mario Rossi", "Giulia Bianchi", "Luca Rossi"]
+    },
+    {
+        "id": 2,
+        "familyName": "Famiglia Verdi",
+        "members": ["Giuseppe Verdi", "Anna Verdi"]
+    },
+    {
+        "id": 3,
+        "familyName": "Single Esempio",
+        "members": ["Alessandro Manzoni"]
+    },
+    {
+        "id": 4,
+        "familyName": "Zio Paperone",
+        "members": ["Paperon de Paperoni"]
+    }
+]
