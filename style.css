@@ -11,7 +11,8 @@
     /* Colori tema */
     --bg-sage: rgb(244, 233, 211); 
     --bg-sage-light: rgb(231, 230, 196);
-    --wine-color: #5c1a20;  
+    --wine-color: #5c1a20; 
+    --bg-sage--dark: rgb(218, 216, 183); 
     --wine-color-light: #693a3f; 
     --wine-dark: #4a1218;   
     --text-color: #212121;

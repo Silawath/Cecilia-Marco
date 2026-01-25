@@ -1,72 +1,55 @@
-/* <=================== SISTEMA DI PROTEZIONE PASSWORD ===================> */
+/* <=================== SISTEMA DI ACCESSO GLOBALE ===================> */
 
-// PASSWORD SEGRETA (Modificala qui!)
-const PASSWORD_CORRETTA = "272300"; 
+const PASSWORD_UNICA = "272300"; 
 
-// 1. CONTROLLO ACCESSO IMMEDIATO
+// 1. CONTROLLO ACCESSO (Eseguito su tutte le pagine)
 (function checkAccess() {
-    const hasAccess = sessionStorage.getItem('access_granted');
+    const isAuth = sessionStorage.getItem('site_access'); 
     const path = window.location.pathname;
-    // Verifica se siamo nella pagina intro (supporta anche /intro.html)
     const isIntroPage = path.indexOf('intro.html') !== -1; 
 
-    // Se NON ho il pass e NON sono nella intro -> CALCIO FUORI -> Intro
-    if (!hasAccess && !isIntroPage) {
+    // Se non sei autenticato e NON sei nella intro -> Vai alla intro
+    if (!isAuth && !isIntroPage) {
         window.location.href = 'intro.html';
     } 
-    // Se HO il pass e sono nella intro -> VAI DENTRO -> Index
-    else if (hasAccess && isIntroPage) {
+    // Se sei già autenticato e sei nella intro -> Vai alla home
+    else if (isAuth && isIntroPage) {
         window.location.href = 'index.html';
     }
 })();
 
-
-/* <=================== LOGICA PAGINA ===================> */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- A. GESTIONE PASSWORD (Solo su intro.html) ---
+    // --- A. GESTIONE PASSWORD UNICA (Solo su intro.html) ---
     const enterBtn = document.getElementById('enter-site-btn');
     const inputCode = document.getElementById('access-code');
     const errorMsg = document.getElementById('error-msg');
     
-    // Funzione che controlla la password
-    function checkPassword() {
-        const userCode = inputCode.value.trim(); // Toglie spazi vuoti
-
-        if (userCode === PASSWORD_CORRETTA) {
-            // 1. Password Giusta!
-            sessionStorage.setItem('access_granted', 'true'); // Diamo il pass
-            document.getElementById('intro-overlay').classList.add('fade-out');
-            
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 500); 
-        } else {
-            // 2. Password Sbagliata
-            errorMsg.style.display = 'block';
-            inputCode.classList.add('shake-animation'); // Effetto errore
-            
-            // Rimuovi animazione dopo 0.5s per poterla rifare
-            setTimeout(() => {
-                inputCode.classList.remove('shake-animation');
-            }, 500);
-        }
-    }
-
     if (enterBtn && inputCode) {
-        // Controllo al click del bottone
-        enterBtn.addEventListener('click', checkPassword);
-
-        // Controllo se premi INVIO sulla tastiera
-        inputCode.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                checkPassword();
+        function performLogin() {
+            const code = inputCode.value.trim();
+            
+            if (code === PASSWORD_UNICA) {
+                sessionStorage.setItem('site_access', 'true');
+                document.getElementById('intro-overlay').classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            } else {
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = "Password errata.";
+                inputCode.classList.add('shake-animation');
+                setTimeout(() => inputCode.classList.remove('shake-animation'), 500);
             }
+        }
+
+        enterBtn.addEventListener('click', performLogin);
+        inputCode.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performLogin();
         });
     }
 
-
-    // --- B. GESTIONE MENU MOBILE ---
+    // --- B. MENU MOBILE ---
     const menuCheckbox = document.getElementById('check');
     const menuLinks = document.querySelectorAll('nav ul li a');
 
@@ -77,13 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = 'auto'; 
             });
         });
-        
         menuCheckbox.addEventListener('change', () => {
-            if(menuCheckbox.checked) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.body.style.overflow = menuCheckbox.checked ? 'hidden' : 'auto';
         });
     }
 
@@ -101,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (var i = 0; i < reveals.length; i++) {
             var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150;
+            var elementVisible = 100;
             if (elementTop < windowHeight - elementVisible) {
                 reveals[i].classList.add("active");
             }
@@ -110,3 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", reveal);
     reveal(); 
 });
+
+// Funzioni Navigazione Globali
+function goRSPV() { window.location.href = "rsvp.html"; }
+function goRegalo() { window.location.href = "listanozze.html"; }

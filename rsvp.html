@@ -13,324 +13,399 @@
 
     <nav>
         <input type="checkbox" id="check">
-        
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        
-        <label class="logo">
-            <a href="index.html" style="color: white; text-decoration:none; ">C&M</a>
-        </label>
-
+        <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>
+        <label class="logo"><a href="index.html" style="color: white; text-decoration:none;">C&M</a></label>
         <ul class="text">
-        <li><a href="index.html#location">Location</a></li>
+            <li><a href="index.html#location">Location</a></li>
             <li><a href="rsvp.html">R.S.V.P.</a></li>
-            <li><a href="listanozze.html">Viaggio</a></li>
+            <li><a href="listanozze.html">Lista Nozze</a></li>
             <li><a href="informazioni.html">Informazioni</a></li>
-            <li><a href="rsvp.html#contatti">Contatti</a></li>
+            <li><a href="#contatti">Contatti</a></li>
         </ul>
     </nav>
+    
     <div class="rsvp-container-page">
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
-        
+
         <h2 class="rsvp-title">Conferma la tua presenza</h2>
         
         <div class="rsvp-container">
-            <div class="form-step active" id="step1">
-                <h3 class="title-instruction">Cerca il tuo nome e cognome</h3>
-                <p class="step-instruction">Inseriscilo nella barra sottostante per confermare la tua presenza e quella del tuo nucleo familiare</p>
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Es. Mario Rossi" style="margin-bottom: 40px;">
-                    <button class="huge-btn" style="margin: 0; min-width: 120px;" onclick="searchGuest()">Cerca</button>
-                </div>
-                <p id="searchError" class="error-msg"></p>
-            </div>
-
-            <div class="form-step" id="step2">
-                <h3 class="title-instruction">Chi sarà presente?</h3>
-                <p class="step-instruction">Seleziona chi parteciperà al matrimonio.</p>
-                <div id="familyList" class="family-list">
+            <div id="dynamicContent">
+                
+                <div class="form-step active" id="step1">
+                    <h3 class="title-instruction">Benvenuti</h3>
+                    <p class="step-instruction">Inserite il vostro nome e cognome per accedere.</p>
+                    
+                    <div class="search-box" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                        
+                        <input type="text" id="nameInput" placeholder="nome" style="width: 100%;">
+                        <input type="text" id="surnameInput" placeholder="cognome" style="width: 100%;">
+                        
+                        <button class="huge-btn" style="width: auto; min-width: 150px; margin: 10px 0 0 0;" onclick="searchGuest()">Accedi</button>
                     </div>
-                <div class="nav-buttons">
-                    <button class="huge-btn" style="width: 48%;" onclick="prevStep(1)">Indietro</button>
-                    <button class="huge-btn" style="width: 48%;" onclick="goToDietStep()">Avanti</button>
+                    
+                    <p id="searchError" class="error-msg" style="text-align: center; margin-top: 10px;"></p>
+                    
+                    <div id="searchResults" style="margin-top: 20px;"></div>
                 </div>
-            </div>
-
-            <div class="form-step" id="step3">
-                <h3 class="title-instruction">Esigenze Alimentari</h3>
-                <p class="step-instruction">Indica le preferenze per i partecipanti confermati.</p>
-                <div id="dietList" class="diet-list">
-                    </div>
-                <div class="nav-buttons">
-                    <button class="huge-btn" style="width: 48%;" onclick="prevStep(2)">Indietro</button>
-                    <button class="huge-btn" style="width: 48%;" onclick="submitRSVP()">Invia</button>
-                </div>
-            </div>
-
-            <div class="form-step" id="step4" style="text-align: center;">
-                <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--wine-color); margin-bottom: 20px;"></i>
-                <h3>Grazie!</h3>
-                <p class="step-instruction">La vostra conferma è stata ricevuta.</p>
-                <a href="index.html" class="huge-btn" style="display: inline-block; text-decoration: none; margin-top:20px;">Torna alla Home</a>
             </div>
         </div>
     </div>
 
     <footer id="contatti">
-        <div class="footer-col left">
-            <h3>Cecilia Terranova</h3>
-            <p>Tel: +39 329 9865945</p>
-        </div>
-
         <div class="footer-col center">
-            <h2 style="font-size: 1.5rem; margin-bottom: 10px; color: white;">Cecilia & Marco</h2>
-            <div class="text" style="color: #eee; margin-bottom: 15px;">27 Giugno 2026</div>
-            
-            <p>Per qualsiasi informazione scrivici a:</p>
-            <p style="margin-top: 5px;">
-                <a href="mailto:marcoececilia2023@gmail.com" style="font-size: 1.2rem; color: #eee;">
-                    marcoececilia2023@gmail.com
-                </a>
-            </p>
-        </div>
-
-        <div class="footer-col right">
-            <h3>Marco Parmeggiani</h3> 
-            <p>Tel: +39 320 4143614</p>
+             <p style="color: white;">Cecilia & Marco - 27 Giugno 2026</p>
         </div>
     </footer>
-<script src="main.js"></script>
+
+    <script src="main.js"></script>
     <script>
-        // --- DATABASE INVITATI ---
-        
+        // <=== CONFIGURAZIONE ===>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyg_VD5CDJouOHfFYD94njNdAqLu7FZEt_b0eM9PgP5f9nhsf11FD9lG60Nm4KhFERxmA/exec"; 
+        const DEADLINE = new Date("2026-04-15"); 
 
-        // --- VARIABILI GLOBALI ---
-        let guestDatabase = []; // Iniziamo vuoti
-        let currentFamily = null;
+        let guestDatabase = [];
+        let currentUser = null; 
         let confirmedGuests = [];
+        let editingData = null; 
 
-        // --- CARICAMENTO DATABASE ESTERNO ---
         document.addEventListener("DOMContentLoaded", () => {
             fetch('invitati.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Impossibile trovare il file invitati.json");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    guestDatabase = data;
-                    console.log("Lista invitati caricata:", guestDatabase);
-                })
-                .catch(error => {
-                    console.error("Errore nel caricamento invitati:", error);
-                    alert("Attenzione: Impossibile caricare la lista invitati. Assicurati di eseguire il sito su un server.");
-                });
+                .then(res => res.json())
+                .then(data => { guestDatabase = data; })
+                .catch(err => console.error("Errore JSON:", err));
         });
-        // --- FUNZIONI NAVIGAZIONE ---
-        function updateProgress(percent) {
-            document.getElementById('progressBar').style.width = percent + '%';
-        }
 
-        function showStep(stepId) {
-            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
-            document.getElementById(stepId).classList.add('active');
-        }
-
-        function prevStep(targetStep) {
-            if(targetStep === 1) {
-                showStep('step1');
-                updateProgress(25);
-            } else if (targetStep === 2) {
-                showStep('step2');
-                updateProgress(50);
-            }
-        }
-
-        // --- STEP 1: RICERCA ---
+        // --- STEP 1: RICERCA SICURA ---
         function searchGuest() {
-            const input = document.getElementById('searchInput').value.toLowerCase().trim();
+            const nameVal = document.getElementById('nameInput').value.toLowerCase().trim();
+            const surnameVal = document.getElementById('surnameInput').value.toLowerCase().trim();
+            const resultsDiv = document.getElementById('searchResults');
             const errorMsg = document.getElementById('searchError');
             
-            if (input.length < 3) {
-                errorMsg.innerText = "Inserisci almeno 3 lettere.";
+            resultsDiv.innerHTML = ""; 
+            
+            if (nameVal.length < 2 || surnameVal.length < 2) {
+                errorMsg.innerText = "Inserisci sia il Nome che il Cognome.";
+                return;
+            }
+            errorMsg.innerText = "";
+
+            const results = guestDatabase.filter(family => 
+                family.members.some(member => {
+                    const m = member.toLowerCase();
+                    return m.includes(nameVal) && m.includes(surnameVal);
+                })
+            );
+
+            if (results.length === 0) {
+                errorMsg.innerText = "Nessun invito trovato con questo nome.";
                 return;
             }
 
-            const foundFamily = guestDatabase.find(family => 
-                family.members.some(member => member.toLowerCase().includes(input))
-            );
-
-            if (foundFamily) {
-                currentFamily = foundFamily;
-                errorMsg.innerText = "";
-                renderFamilyList();
-                showStep('step2');
-                updateProgress(50);
+            if (results.length === 1) {
+                // Caso perfetto: Entra diretto (Privacy Top)
+                selectFamily(results[0]);
             } else {
-                errorMsg.innerText = "Nessun invito trovato. Prova con un altro nome.";
+                // Caso Omonimia: Mostra scelta
+                resultsDiv.innerHTML = "<p style='margin-bottom:10px;'>Abbiamo trovato più inviti. Seleziona il tuo:</p>";
+                results.forEach(family => {
+                    const btn = document.createElement('div');
+                    btn.style.cssText = "background:white; border:1px solid var(--wine-color); padding:15px; margin-bottom:10px; border-radius:8px; cursor:pointer; transition:0.3s; text-align:left;";
+                    btn.innerHTML = `
+                        <div style="font-size:1.1rem; color:var(--wine-dark); font-weight:bold;">${family.familyName}</div>
+                        <div style="font-size:0.9rem; color:#666;">Include: ${family.members.join(", ")}</div>
+                    `;
+                    btn.onclick = () => selectFamily(family);
+                    resultsDiv.appendChild(btn);
+                });
             }
         }
 
-        // --- STEP 2: RENDER LISTA ---
-        function renderFamilyList() {
-            const container = document.getElementById('familyList');
-            container.innerHTML = ""; 
+        function selectFamily(family) {
+            currentUser = family; 
+            const container = document.getElementById('dynamicContent');
+            container.innerHTML = `
+                <div style="text-align:center; padding:40px;">
+                    <h3>Ciao, ${family.familyName}</h3>
+                    <p>Verifico se avete già risposto...</p>
+                    <i class="fas fa-spinner fa-spin" style="font-size:2rem; color:var(--wine-color); margin-top:20px;"></i>
+                </div>
+            `;
 
-            currentFamily.members.forEach((member, index) => {
-                const div = document.createElement('div');
-                div.className = 'guest-row';
-                div.innerHTML = `
-                    <span class="guest-name">${member}</span>
-                    <div class="attendance-options">
-                        <label>
-                            <input type="radio" name="attend_${index}" value="yes" checked> Ci sarò
-                        </label>
-                        <label>
-                            <input type="radio" name="attend_${index}" value="no"> Non ci sarò
-                        </label>
-                    </div>
-                `;
-                container.appendChild(div);
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify({ action: "get_family_data", code: currentUser.code })
+            })
+            .then(res => res.json())
+            .then(data => {
+                restoreContainer(); 
+                if (data.found) {
+                    showSummary(data, data.canEdit);
+                } else {
+                    startFormNew(); 
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                restoreContainer();
+                startFormNew(); 
             });
         }
 
-        // --- STEP 3: DIETA ---
+        function restoreContainer() {
+            document.getElementById('dynamicContent').innerHTML = ""; 
+        }
+
+        // --- STEP 2: FORM PRESENZE ---
+        function startFormNew() {
+            const container = document.getElementById('dynamicContent');
+            let membersHtml = '';
+            
+            currentUser.members.forEach((member, index) => {
+                let isYes = true; 
+                if (editingData) {
+                    const oldGuest = editingData.guests.find(g => 
+                        g.name.toLowerCase().trim() === member.toLowerCase().trim()
+                    );
+                    if (oldGuest && String(oldGuest.status).toLowerCase().trim() === 'no') isYes = false;
+                }
+
+                const checkedYes = isYes ? 'checked' : '';
+                const checkedNo = !isYes ? 'checked' : '';
+
+                membersHtml += `
+                    <div class="guest-row">
+                        <span class="guest-name">${member}</span>
+                        <div class="attendance-options">
+                            <label><input type="radio" name="attend_${index}" value="yes" ${checkedYes}> Ci sarò</label>
+                            <label><input type="radio" name="attend_${index}" value="no" ${checkedNo}> Non ci sarò</label>
+                        </div>
+                    </div>`;
+            });
+
+            container.innerHTML = `
+                <div class="form-step active" id="step2">
+                    <h3 class="title-instruction">Benvenuti</h3>
+                    <p class="step-instruction">Confermate la presenza per ogni componente.</p>
+                    <div id="familyList">${membersHtml}</div>
+                    <div class="nav-buttons">
+                        <button class="huge-btn" style="width: 100%;" onclick="goToDietStep()">Avanti</button>
+                    </div>
+                </div>
+                <div class="form-step" id="step3"></div>
+                <div class="form-step" id="step4"></div>
+            `;
+            updateProgress(33);
+        }
+
+        // --- RIEPILOGO ---
+        function showSummary(data, canEdit) {
+            const container = document.getElementById('dynamicContent');
+            document.querySelector('.rsvp-title').innerText = "La tua Conferma";
+
+            let guestsHtml = data.guests.map(g => {
+                const statusColor = g.status.toLowerCase().includes('s') ? 'green' : 'red';
+                const statusText = g.status.toLowerCase().includes('s') ? 'Presente' : 'Assente';
+                return `<li style="margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">
+                            <strong>${g.name}</strong> <br>
+                            Stato: <span style="color:${statusColor}; font-weight:bold;">${statusText}</span>
+                            ${g.notes ? `<br><small>Note: ${g.notes}</small>` : ''}
+                        </li>`;
+            }).join('');
+
+            window.tempSummaryData = data;
+
+            const editBtn = canEdit 
+                ? `<button class="huge-btn" onclick="enableEdit()">Modifica Risposta</button>`
+                : `<p style="color:red; font-weight:bold; margin-top:20px;">Le modifiche sono chiuse.</p>`;
+
+            container.innerHTML = `
+                <div class="form-step active" style="text-align:center; font-family:'Montserrat';">
+                    <p style="margin-bottom:15px;">Risposta registrata per: <strong>${data.familyName}</strong></p>
+                    <ul style="list-style:none; padding:0; text-align:left;">${guestsHtml}</ul>
+                    ${data.generalNotes ? `<div style="text-align:left; margin-top:10px; background:#f9f9f9; padding:10px; border-radius:5px;"><strong>Note Generali:</strong><br>${data.generalNotes}</div>` : ''}
+                    ${editBtn}
+                </div>
+            `;
+            updateProgress(100);
+        }
+
+        function enableEdit() {
+            editingData = window.tempSummaryData;
+            document.querySelector('.rsvp-title').innerText = "Modifica Presenza";
+            startFormNew(); 
+        }
+
+        // --- STEP 3: DIETE ---
         function goToDietStep() {
             confirmedGuests = [];
-            const container = document.getElementById('dietList');
-            container.innerHTML = "";
+            const step3Div = document.getElementById('step3');
+            let htmlContent = `
+                <h3 class="title-instruction">Esigenze Alimentari</h3>
+                <p class="step-instruction">Segnalaci eventuali intolleranze.</p>
+                <div id="dietList">`;
+
             let anyoneComing = false;
 
-            currentFamily.members.forEach((member, index) => {
+            currentUser.members.forEach((member, index) => {
                 const radios = document.getElementsByName(`attend_${index}`);
                 let isComing = false;
-                for (let r of radios) {
-                    if (r.checked && r.value === 'yes') isComing = true;
-                }
+                for (let r of radios) if (r.checked && r.value === 'yes') isComing = true;
 
                 if (isComing) {
                     anyoneComing = true;
-                    confirmedGuests.push({ name: member }); 
+                    confirmedGuests.push({ name: member, originalIndex: index }); 
                     
-                    const div = document.createElement('div');
-                    div.className = 'diet-row';
-                    // Checkbox "Nessuna esigenza" aggiunto
-                    div.innerHTML = `
-                        <p style="margin-bottom:15px; font-weight:bold; font-size:1.1rem; color:var(--wine-dark);">${member}</p>
-                        <div class="diet-checkbox-group">
-                            <label class="diet-checkbox-label">
-                                <input type="checkbox" id="none_${index}" checked onchange="handleNoneLogic(${index})"> Nessuna esigenza alimentare
-                            </label>
-                            <label class="diet-checkbox-label">
-                                <input type="checkbox" id="veg_${index}" onchange="handleSpecialLogic(${index}, 'veg')"> Vegetariano
-                            </label>
-                            <label class="diet-checkbox-label">
-                                <input type="checkbox" id="vegan_${index}" onchange="handleSpecialLogic(${index}, 'vegan')"> Vegano
-                            </label>
-                            <label class="diet-checkbox-label">
-                                <input type="checkbox" id="intol_${index}" onchange="handleSpecialLogic(${index}, 'intol')"> Intolleranze / Allergie
-                            </label>
-                            <input type="text" id="intol_text_${index}" class="intolerance-input" placeholder="Specifica (es. Glutine, Lattosio...)">
-                        </div>
-                        <hr style="border:0; border-top:1px solid #ddd; margin-top:20px; margin-bottom:20px;">
-                    `;
-                    container.appendChild(div);
+                    let isVeg = false, isVegan = false, isIntol = false, intolText = "", isNone = true;
+
+                    if (editingData) {
+                        const oldGuest = editingData.guests.find(g => g.name.toLowerCase().trim() === member.toLowerCase().trim());
+                        if (oldGuest && oldGuest.notes) {
+                            let note = oldGuest.notes.toLowerCase();
+                            let cleanNote = oldGuest.notes;
+
+                            if (note.includes("vegetariano")) { isVeg = true; isNone = false; cleanNote = cleanNote.replace(/Vegetariano/yi, ""); }
+                            if (note.includes("vegano")) { isVegan = true; isNone = false; cleanNote = cleanNote.replace(/Vegano/yi, ""); }
+                            
+                            cleanNote = cleanNote.replace("Nessuna esigenza", "").replace(/[,]/g, " ").trim();
+                            if (cleanNote.length > 2) {
+                                isIntol = true; isNone = false;
+                                intolText = cleanNote.replace(/^Intolleranze:\s*/i, "").trim();
+                            }
+                        }
+                    }
+
+                    htmlContent += `
+                        <div class="diet-row">
+                            <p style="margin-bottom:10px; font-weight:bold; font-size:1.1rem; color:var(--wine-dark);">${member}</p>
+                            <div class="diet-checkbox-group">
+                                <label class="diet-checkbox-label"><input type="checkbox" id="none_${index}" ${isNone ? 'checked' : ''} onchange="handleNoneLogic(${index})"> Nessuna esigenza</label>
+                                <label class="diet-checkbox-label"><input type="checkbox" id="veg_${index}" ${isVeg ? 'checked' : ''} onchange="handleSpecialLogic(${index}, 'veg')"> Vegetariano</label>
+                                <label class="diet-checkbox-label"><input type="checkbox" id="vegan_${index}" ${isVegan ? 'checked' : ''} onchange="handleSpecialLogic(${index}, 'vegan')"> Vegano</label>
+                                <label class="diet-checkbox-label"><input type="checkbox" id="intol_${index}" ${isIntol ? 'checked' : ''} onchange="handleSpecialLogic(${index}, 'intol')"> Intolleranze</label>
+                                <input type="text" id="intol_text_${index}" class="intolerance-input" value="${intolText}" style="display: ${isIntol ? 'block' : 'none'};" placeholder="Specificare...">
+                            </div>
+                            <hr style="border:0; border-top:1px solid #ddd; margin:20px 0;">
+                        </div>`;
+                } else {
+                     confirmedGuests.push({ name: member, isAbsent: true });
                 }
             });
 
-            if (!anyoneComing) {
-                if(confirm("Nessuno presente. Confermi?")) submitRSVP();
+            if (anyoneComing) {
+                let oldGenNote = (editingData && editingData.generalNotes) ? editingData.generalNotes : "";
+                htmlContent += `
+                    <div style="margin-top:30px;">
+                        <h3 style="font-size:1.1rem; color:var(--wine-dark); margin-bottom:10px;">Note Generali</h3>
+                        <p style="font-size:0.9rem; margin-bottom:5px;">Seggioloni, necessità motorie, ecc:</p>
+                        <textarea id="generalNotesInput" rows="3" style="width:100%; padding:10px; border:1px solid var(--wine-color); border-radius:5px; font-family:'Montserrat';">${oldGenNote}</textarea>
+                    </div>`;
             } else {
-                showStep('step3');
-                updateProgress(75);
+                if(!confirm("Confermi che nessuno sarà presente?")) return;
             }
+
+            htmlContent += `
+                </div>
+                <div class="nav-buttons">
+                    <button class="huge-btn" style="width: 48%; background:transparent; border:1px solid #666; color:#666;" onclick="showStep('step2'); updateProgress(33);">Indietro</button>
+                    <button class="huge-btn" style="width: 48%;" onclick="submitRSVP()">Invia Conferma</button>
+                </div>`;
+
+            step3Div.innerHTML = htmlContent;
+            showStep('step3');
+            updateProgress(66);
         }
 
-        // LOGICHE CHECKBOX
         function handleNoneLogic(index) {
             const noneBox = document.getElementById(`none_${index}`);
             if (noneBox.checked) {
-                document.getElementById(`veg_${index}`).checked = false;
-                document.getElementById(`vegan_${index}`).checked = false;
-                
-                const intolBox = document.getElementById(`intol_${index}`);
-                intolBox.checked = false;
-                
-                const textInput = document.getElementById(`intol_text_${index}`);
-                textInput.style.display = 'none';
-                textInput.value = '';
+                ['veg', 'vegan', 'intol'].forEach(type => {
+                    const el = document.getElementById(`${type}_${index}`);
+                    if(el) el.checked = false;
+                });
+                const text = document.getElementById(`intol_text_${index}`);
+                if(text) text.style.display = 'none';
             }
         }
-
         function handleSpecialLogic(index, type) {
-            const noneBox = document.getElementById(`none_${index}`);
-            const currentBox = document.getElementById(`${type}_${index}`);
-            
-            if (currentBox.checked) {
-                noneBox.checked = false;
-            }
-
-            if (type === 'veg' && currentBox.checked) {
-                document.getElementById(`vegan_${index}`).checked = false; 
-            } else if (type === 'vegan' && currentBox.checked) {
-                document.getElementById(`veg_${index}`).checked = false; 
-            }
-
+            document.getElementById(`none_${index}`).checked = false;
             if (type === 'intol') {
-                const textInput = document.getElementById(`intol_text_${index}`);
-                if (currentBox.checked) {
-                    textInput.style.display = 'block';
-                    textInput.focus();
-                } else {
-                    textInput.style.display = 'none';
-                    textInput.value = ''; 
-                }
+                const box = document.getElementById(`intol_${index}`);
+                const text = document.getElementById(`intol_text_${index}`);
+                text.style.display = box.checked ? 'block' : 'none';
             }
         }
 
-        // --- STEP 4: INVIO ---
         function submitRSVP() {
-            let finalData = [];
-
-            currentFamily.members.forEach((member, originalIndex) => {
-                const isPresent = confirmedGuests.find(g => g.name === member);
-                
-                if (isPresent) {
+            let guestsPayload = [];
+            confirmedGuests.forEach((g) => {
+                let status = 'no';
+                let noteString = '';
+                if (!g.isAbsent) {
+                    status = 'yes';
                     let notes = [];
-                    
-                    if(document.getElementById(`none_${originalIndex}`).checked) {
-                        notes.push("Nessuna esigenza");
-                    } else {
-                        if(document.getElementById(`veg_${originalIndex}`).checked) notes.push("Vegetariano");
-                        if(document.getElementById(`vegan_${originalIndex}`).checked) notes.push("Vegano");
-                        
-                        const intolCheck = document.getElementById(`intol_${originalIndex}`);
-                        if(intolCheck.checked) {
-                            const detail = document.getElementById(`intol_text_${originalIndex}`).value;
+                    let idx = g.originalIndex;
+                    if(document.getElementById(`none_${idx}`).checked) notes.push("Nessuna esigenza");
+                    else {
+                        if(document.getElementById(`veg_${idx}`).checked) notes.push("Vegetariano");
+                        if(document.getElementById(`vegan_${idx}`).checked) notes.push("Vegano");
+                        if(document.getElementById(`intol_${idx}`).checked) {
+                            const detail = document.getElementById(`intol_text_${idx}`).value;
                             notes.push(`Intolleranze: ${detail || 'Generiche'}`);
                         }
                     }
-                    
-                    if (notes.length === 0) notes.push("Nessuna esigenza specificata");
-
-                    finalData.push({
-                        name: member,
-                        notes: notes.join(", ")
-                    });
+                    noteString = notes.join(", ");
                 }
+                guestsPayload.push({ name: g.name, status: status, notes: noteString });
             });
 
-            console.log("DATI FINALI DA INVIARE:", finalData);
-            updateProgress(100);
-            showStep('step4');
+            const notesInput = document.getElementById('generalNotesInput');
+            
+            const payload = {
+                action: "submit",
+                code: currentUser.code, 
+                familyName: currentUser.familyName,
+                guests: guestsPayload,
+                generalNotes: notesInput ? notesInput.value : ""
+            };
+
+            const submitBtn = document.querySelector('#step3 button:last-child');
+            submitBtn.innerText = "Salvataggio...";
+            submitBtn.disabled = true;
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                editingData = null;
+                const container = document.getElementById('dynamicContent');
+                container.innerHTML = `
+                    <div class="form-step active" style="text-align:center;">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--wine-color); margin-bottom: 20px;"></i>
+                        <h3>Grazie!</h3>
+                        <p class="step-instruction">La vostra conferma è stata aggiornata.</p>
+                        <a href="index.html" class="huge-btn" style="display:inline-block; text-decoration:none; margin-top:20px;">Torna alla Home</a>
+                    </div>
+                `;
+                updateProgress(100);
+            })
+            .catch(error => {
+                alert("Errore invio.");
+                submitBtn.disabled = false;
+            });
         }
 
-
+        function updateProgress(p) { document.getElementById('progressBar').style.width = p + '%'; }
+        function showStep(id) {
+            document.querySelectorAll('.form-step').forEach(e => e.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelector('.rsvp-container-page').scrollIntoView({behavior:'smooth'});
+        }
     </script>
-    
 </body>
 </html>

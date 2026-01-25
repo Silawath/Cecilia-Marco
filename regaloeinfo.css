@@ -169,7 +169,7 @@
 }
 
 .faq-item.active .faq-question {
-    background-color: var(--bg-sage-light);
+    background-color: var(--bg-sage--dark);
 }
 
 .faq-item.active .faq-question i {
@@ -178,15 +178,20 @@
 
 
 /* <=================== SEZIONE PERSONE DI RIFERIMENTO ===================> */
+/* <=================== SEZIONE PERSONE DI RIFERIMENTO (Flexbox Centrato) ===================> */
 .people-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;            
+    flex-wrap: wrap;          
+    justify-content: center;  
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1900px;
     margin: 0 auto;
 }
 
 .person-card {
+    
+    flex: 0 1 390px;          
+    
     background: white;
     border-radius: 15px;
     overflow: hidden;
